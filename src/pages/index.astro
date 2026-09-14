@@ -101,7 +101,7 @@ import Layout from '../Layouts/Layout.astro';
       <h2 class="text-xl font-extrabold text-white mb-5" data-tr="Öne Çıkan Sistemler" data-en="Featured Systems" data-ar="الأنظمة الأبرز">Öne Çıkan Sistemler</h2>
 
       <div class="grid md:grid-cols-2 gap-5">
-        <div class="interactive-card p-7 flex flex-col justify-between">
+        <div class="interactive-card project-trigger p-7 flex flex-col justify-between" role="button" tabindex="0" data-project="pt500" aria-haspopup="dialog">
           <div>
             <span class="text-xs font-bold text-teal-400 uppercase tracking-wide font-['JetBrains_Mono']">ARM Cortex-M0+ &amp; Sürücüler</span>
             <h3 class="text-lg font-bold text-white mt-2 mb-3">PT500 Motor Sürücü Sistemi</h3>
@@ -121,7 +121,7 @@ import Layout from '../Layouts/Layout.astro';
           </div>
         </div>
 
-        <div class="interactive-card p-7 flex flex-col justify-between">
+        <div class="interactive-card project-trigger p-7 flex flex-col justify-between" role="button" tabindex="0" data-project="kts200" aria-haspopup="dialog">
           <div>
             <span class="text-xs font-bold text-teal-400 uppercase tracking-wide font-['JetBrains_Mono']">ESP32 &amp; IoT Donanım</span>
             <h3 class="text-lg font-bold text-white mt-2 mb-3">KTS200 Karavan Otomatik Terazileme</h3>
@@ -273,7 +273,7 @@ import Layout from '../Layouts/Layout.astro';
 
     <div class="grid md:grid-cols-2 gap-5">
       <!-- PT500 -->
-      <div class="interactive-card p-8 flex flex-col justify-between">
+      <div class="interactive-card project-trigger p-8 flex flex-col justify-between" role="button" tabindex="0" data-project="pt500" aria-haspopup="dialog">
         <div>
           <span class="text-xs font-bold text-teal-400 uppercase tracking-wide font-['JetBrains_Mono']">ARM Cortex-M0+ &amp; Sürücü</span>
           <h3 class="text-xl font-bold text-white mt-2 mb-3">PT500 Motor Sürücü Sistemi</h3>
@@ -295,7 +295,7 @@ import Layout from '../Layouts/Layout.astro';
       </div>
 
       <!-- KTS200 -->
-      <div class="interactive-card p-8 flex flex-col justify-between">
+      <div class="interactive-card project-trigger p-8 flex flex-col justify-between" role="button" tabindex="0" data-project="kts200" aria-haspopup="dialog">
         <div>
           <span class="text-xs font-bold text-teal-400 uppercase tracking-wide font-['JetBrains_Mono']">ESP32 &amp; IoT Donanım</span>
           <h3 class="text-xl font-bold text-white mt-2 mb-3">KTS200 Karavan Otomatik Terazileme</h3>
@@ -327,7 +327,7 @@ import Layout from '../Layouts/Layout.astro';
     </div>
 
     <div class="space-y-4">
-      <div class="interactive-card p-7">
+      <div class="interactive-card article-trigger p-7" role="button" tabindex="0" data-article="isr_ringbuffer" aria-haspopup="dialog">
         <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
           <h3
             class="text-lg font-bold text-white hover:text-teal-400 transition-colors"
@@ -349,7 +349,7 @@ import Layout from '../Layouts/Layout.astro';
         </p>
       </div>
 
-      <div class="interactive-card p-7">
+      <div class="interactive-card article-trigger p-7" role="button" tabindex="0" data-article="ota_architecture" aria-haspopup="dialog">
         <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
           <h3
             class="text-base font-bold text-white hover:text-teal-400 transition-colors"
@@ -519,6 +519,241 @@ import Layout from '../Layouts/Layout.astro';
 
 </Layout>
 
+<div id="project-modal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" hidden>
+  <div class="project-modal-backdrop" data-modal-close></div>
+  <div class="project-modal-panel" role="document">
+    <button type="button" class="project-modal-close" data-modal-close aria-label="Kapat">&times;</button>
+    <span id="project-modal-category" class="project-modal-category"></span>
+    <h2 id="project-modal-title"></h2>
+    <div id="project-modal-description" class="project-modal-description"></div>
+    <div id="project-modal-pills" class="project-modal-pills"></div>
+  </div>
+</div>
+
+<div id="article-modal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title" hidden>
+  <div class="project-modal-backdrop" data-article-modal-close></div>
+  <div class="project-modal-panel" role="document">
+    <button type="button" class="project-modal-close" data-article-modal-close aria-label="Kapat">&times;</button>
+    <span id="article-modal-category" class="project-modal-category"></span>
+    <h2 id="article-modal-title"></h2>
+    <span id="article-modal-date" class="article-modal-date"></span>
+    <div id="article-modal-description" class="project-modal-description"></div>
+    <div id="article-modal-pills" class="project-modal-pills"></div>
+  </div>
+</div>
+
+<script is:inline>
+  const articleDatabase = {
+    isr_ringbuffer: {
+      category: 'Gömülü Sistemler & Düşük Seviye Mimari',
+      title: 'Gömülü Sistemlerde Donanım Kesmeleri (ISR) ve Ring Buffer Yönetimi',
+      date: 'Ağustos 2026',
+      desc: `Gömülü sistemlerde seri haberleşme (UART), mikrodenetleyicilerin dış dünya ile veri alışverişinde en kritik arterlerinden biridir. Ancak standart HAL (Hardware Abstraction Layer) kütüphaneleri ve bloklayıcı (blocking) fonksiyonlar, gerçek zamanlı sistemlerde telafisi mümkün olmayan veri kayıplarına (packet drop) yol açabilir. Bu makale, kesme servis rutinleri (ISR) ile dairesel tampon (Ring/Circular Buffer) mekanizmalarının Bare-metal düzeyinde nasıl tasarlandığını derinlemesine inceler.
+
+📌 **1. Sorunun Temeli: Neden Standart Yaklaşımlar Yetersiz Kalıyor?**
+Mikrodenetleyici ana döngüsü (main loop) içerisinde sensör okuma, ekran tazeleme, PID hesaplamaları veya ekran/bulut gönderimleri gibi operasyonlar yürütülürken, UART üzerinden yüksek baud rate hızında (örn. 115200 veya üstü) bayt akışı gerçekleşebilir. Eğer sistem, gelen her bir bayt için ana döngü içerisinde yoklama (polling) yapıyorsa ya da HAL kütüphanelerinin ağır kuyruk mekaniklerine güveniyorsa, CPU başka bir işle meşgul olduğu anda donanım yazmacı (RX register) üzerine yeni veri yazılacak ve önceki bayt ezilecektir (Overrun Error).
+
+📌 **2. Çözüm: Kesme Tabanlı Asenkron Mimarisi (ISR)**
+Veri alımı donanımsal bir kesmeye (USARTx_IRQn) bağlanır. UART RX buffer'ına yeni bir karakter düştüğü an donanım otomatik olarak ISR'ı tetikler. Burada amaç, ISR süresini mutlak minimumda tutmaktır:
+• Kesme rutini içerisinde karmaşık matematiksel işlemler veya gecikmeler (delay) asla bulunmaz.
+• Sadece okunan bayt anında bellekteki Ring Buffer'ın yazma işaretçisine (head pointer) aktarılır ve indeks bir sonraki konuma kaydırılır.
+
+📌 **3. Dairesel Tampon (Ring Buffer) Algoritması:**
+Sabit boyutlu bir dizi (uint8_t buffer[BUFFER_SIZE]) mantıksal olarak halka şeklinde tasarlanır. İki temel işaretçi yönetilir:
+1. **Head (Yazma İşaretçisi):** Yalnızca ISR (kesme rutini) tarafından ilerletilir.
+2. **Tail (Okuma İşaretçisi):** Yalnızca ana döngü (main loop) içerisindeki veri işleme fonksiyonu tarafından ilerletilir.
+Bu sayede FIFO (First In, First Out) prensibiyle, ana program verileri kendi hızında işlerken kesmeler arka planda hiçbir baytı kaçırmadan veriyi istifler.
+
+📌 **4. Kritik Bölgeler (Critical Sections) ve Atomik İşlemler:**
+Çoklu baytlık verilerin okunması veya işaretçi güncellemeleri sırasında, ana döngünün ortasında bir kesmenin gelmesi veri tutarsızlığına (Race Condition) yol açabilir. Bu dezavantajı engellemek için kritik kod bloklarında global kesmeler geçici olarak devre dışı bırakılır (__disable_irq() / __enable_irq()).
+
+🎯 **Sonuç:**
+Bu Bare-metal Ring Buffer mimarisi sayesinde, sistem kaynakları minimum düzeyde tüketilirken, yoğun endüstriyel gürültü ve yüksek veri trafiği altında dahi %100 kararlı ve hatasız haberleşme altyapısı elde edilir.`,
+      pills: ['UART ISR', 'Ring Buffer', 'Bare-Metal', 'C/C++', 'Memory Management', 'FIFO', 'Interrupt Handling']
+    },
+    ota_architecture: {
+      category: 'Endüstriyel IoT & Güvenli Güncelleme Mimarisi',
+      title: 'Endüstriyel Cihazlarda Uzaktan Kablosuz Yazılım Yükleme (OTA) Mimarisi',
+      date: 'Temmuz 2026',
+      desc: `Sahada aktif olarak çalışan endüstriyel otomasyon sistemlerine veya IoT cihazlarına yeni özellikler eklemek ya da hata düzeltmeleri (bugfix) yapmak amacıyla fiziksel programlayıcı bağlamak maliyetlidir ve genellikle imkansızdır. Bu durum, uzaktan kablosuz yazılım güncelleme (Over-The-Air - OTA) altyapısının varlığını zorunlu kılar. Bu makale, ESP32 platformu üzerinde BLE ve Wi-Fi tabanlı, hata toleranslı ve güvenli bir OTA güncelleme sisteminin tasarımını ele alır.
+
+📌 **1. Çift Bölgeli Flash Bölümleme (Dual-Bank Partitioning):**
+Güvenli bir OTA sisteminin temeli, Flash belleğin doğru şekilde partition (bölümleme) edilmesine dayanır. Sistem şu ana bileşenlerden oluşur:
+• **otadata:** Hangi yazılım imajının çalıştırılacağını belirten konfigürasyon alanı.
+• **app0 (Factory/App A):** Birincil kararlı yazılım alanı.
+• **app1 (OTA/App B):** İkincil veya güncellenecek yazılım alanı.
+Güncelleme dosyası arka planda aktif olarak çalışmayan boş bölüme yazılır. Bu esnada cihazın ana operasyonları kesintiye uğramaz.
+
+📌 **2. İkili Dosya (Binary) Aktarımı ve Kriptografik Doğrulama:**
+• Derlenen .bin dosyası, düşük enerjili BLE veya yerel Wi-Fi ağı üzerinden parçalar (chunks) halinde aktarılır.
+• Veri transferi bittikten sonra belleğe yazma işlemi onaylanmadan önce **MD5 veya SHA-256 bütünlük kontrolü** gerçekleştirilir. Paket kaybı veya eksik bayt tespit edilirse güncelleme reddedilir.
+
+📌 **3. Güvenli Geri Dönüş ve Hata Toleransı (Rollback Mechanism):**
+En büyük kabus, uzaktan atılan hatalı bir yazılımın cihazı 'Brick' etmesi (kullanılamaz hale getirmesi) yani saha servis maliyeti doğurmasıdır. Bunu önlemek için şu mekanizma kurulur:
+1. Yeni yazılım yüklendikten sonra cihaz yeniden başlatılır (First Boot).
+2. Yeni imaj, kararlılık testinden (Sanity Check) geçmek zorundadır. Yazılım başarıyla çalışıp ana döngüye girdiğini onaylayana kadar (esp_ota_mark_app_valid_cancel_rollback) sayaç tutulur.
+3. Eğer yeni yazılım kilitlenirse (crash) veya watchdog timer süresi aşılırsa, önyükleyici (bootloader) durumu algılar ve otomatik olarak bir önceki kararlı sürüme güvenli bir şekilde **Rollback** yapar.
+
+📌 **4. Web Serial ve BLE Üzerinden Yerel Alternatif:**
+İnternet altyapısının bulunmadığı noktalarda teknik personelin akıllı telefon veya tarayıcı (Web Serial API) üzerinden kablosuz olarak doğrudan yama (patch) atabilmesi için hafif siklet bir sunucu/istemci katmanı entegre edilmiştir.
+
+🎯 **Sonuç:**
+Bu katmanlı OTA mimarisi; operasyonel kesintileri sıfıra indirir, sahaya müdahale maliyetlerini ortadan kaldırır ve endüstriyel cihazlara uzaktan kurumsal düzeyde yaşam döngüsü yönetimi kazandırır.`,
+      pills: ['ESP32', 'OTA Firmware', 'BLE / Wi-Fi', 'Rollback Mechanism', 'Bootloader', 'Partition Table', 'IoT Security']
+    }
+  };
+
+  const articleModal = document.getElementById('article-modal');
+  const articleCategory = document.getElementById('article-modal-category');
+  const articleTitle = document.getElementById('article-modal-title');
+  const articleDate = document.getElementById('article-modal-date');
+  const articleDescription = document.getElementById('article-modal-description');
+  const articlePills = document.getElementById('article-modal-pills');
+  let lastArticleTrigger = null;
+
+  function openArticleModal(articleKey, trigger) {
+    const article = articleDatabase[articleKey];
+    if (!article || !articleModal) return;
+
+    articleCategory.textContent = article.category;
+    articleTitle.textContent = article.title;
+    articleDate.textContent = article.date;
+    articleDescription.innerHTML = formatProjectDescription(article.desc);
+    articlePills.innerHTML = article.pills.map((pill) => `<span>${pill}</span>`).join('');
+    lastArticleTrigger = trigger;
+    articleModal.hidden = false;
+    document.body.classList.add('modal-open');
+    articleModal.querySelector('.project-modal-close').focus();
+  }
+
+  function closeArticleModal() {
+    if (!articleModal || articleModal.hidden) return;
+    articleModal.hidden = true;
+    document.body.classList.remove('modal-open');
+    lastArticleTrigger?.focus();
+  }
+
+  document.querySelectorAll('.article-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => openArticleModal(trigger.dataset.article, trigger));
+    trigger.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openArticleModal(trigger.dataset.article, trigger);
+      }
+    });
+  });
+
+  articleModal?.querySelectorAll('[data-article-modal-close]').forEach((element) => {
+    element.addEventListener('click', closeArticleModal);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeArticleModal();
+  });
+</script>
+
+<script is:inline>
+  const projectDetails = {
+    pt500: {
+      category: 'ARM Cortex-M0+ & Endüstriyel Sürücü Mimarisi',
+      title: 'PT500 Motor Sürücü Sistemi',
+      desc: `PT500, endüstriyel hareket kontrolü ve zorlu saha koşulları için STM32G030 (ARM Cortex-M0+) mikrodenetleyicisi temel alınarak sıfırdan geliştirilmiş yüksek performanslı bir motor sürücü ve telemetri mimarisidir.
+
+⚙️ **Derinlemesine Teknik Mimari ve Donanım Entegrasyonu:**
+
+1. **Bare-Metal UART & Ring Buffer Sürücü Mimarisi:**
+   HAL (Hardware Abstraction Layer) kütüphanelerinin getirdiği bellek ve zaman aşımı gecikmelerini (overhead) tamamen ortadan kaldırmak için, UART haberleşmesi doğrudan register seviyesinde (Bare-metal) tasarlanmıştır. Kesme tabanlı (ISR) Dairesel Tampon (Circular/Ring Buffer) yapısı sayesinde, yüksek baud rate hızlarında dahi sıfır veri kaybı (packet drop) ile kesintisiz komut alımı sağlanmıştır.
+
+2. **Endüstriyel RS-485 (Half-Duplex) & TDMA Protokolü:**
+   Çoklu cihaz senaryolarında (Multi-drop network) veri çakışmalarını (collision) önlemek amacıyla, zaman tabanlı deterministik bir **TDMA (Time Division Multiple Access)** protokol katmanı yazılmıştır. Bu sayede bus üzerindeki her bir sürücü çakışmasız ve sırayla ana kontrolcü ile haberleşir.
+
+3. **Kablosuz Telemetri & nRF24L01+ Entegrasyonu:**
+   Kablolu iletişimin kısıtlı olduğu hareketli noktalarda anlık durum takibi, hata ayıklama (debugging) ve uzaktan parametre konfigürasyonu için nRF24L01+ RF modülü sisteme entegre edilmiştir.
+
+4. **Hareket Kontrolü & Güvenlik Mekanizmaları:**
+   • H-Bridge sürücü katmanı için yazılımsal **Soft-Start Rampa İvmelenmesi** uygulanarak mekanik darbe (akım piki) engellenmiştir.
+   • Donanımsal aşırı akım (over-current) koruması ve MCU içindeki EEPROM emülasyonu ile kritik hata kodları (kritik sıcaklık, voltaj düşüşü, aşırı akım) kalıcı olarak loglanır.`,
+      pills: ['STM32G030', 'RS-485', 'TDMA', 'Bare-Metal', 'nRF24L01+', 'Ring Buffer', 'H-Bridge', 'EEPROM Log']
+    },
+    kts200: {
+      category: 'ESP32 & IoT Otomasyon ve Telemetri Mimarisi',
+      title: 'KTS200 Karavan Otomatik Terazileme',
+      desc: `KTS200, zorlu arazi koşullarında karavanların dengelenmesi sürecini tamamen otonom hale getiren, ESP32 tabanlı yüksek güvenilirlikli bir gömülü kontrol ve telemetri sistemidir.
+
+  ⚙️ **Derinlemesine Teknik Mimari ve Algoritma Detayları:**
+
+  1. **9-Fazlı Deterministik Durum Makinesi (State Machine):**
+    Sistemin tüm operasyonel döngüsü (başlangıç kalibrasyonu, kaba konumlandırma, hassas dengeleme, emniyet kilitleri ve hata yönetimi) katı kurallara sahip 9 fazlı bir state machine mimarisi ile yönetilir. Bu yapı, beklenmeyen saha kesintilerinde bile sistemin güvenli bir duruma (fail-safe state) geçmesini garanti eder.
+
+  2. **Sensör Verisi Filtreleme & Eğim Analizi:**
+    Hassas ivme/eğim sensörlerinden gelen hamm veriler (raw data), mekanik titreşimleri ve sarsıntıları izole etmek için **EMA (Exponential Moving Average) dijital filtreleme** algoritmalarından geçirilerek gerçek zamanlı ve kararlı açısal koordinatlara dönüştürülür.
+
+  3. **Kablosuz Arayüz & Web Serial / BLE Entegrasyonu:**
+    Saha testleri, kalibrasyon ayarları ve anlık veri izleme için harici bir uygulama gerektirmeyen, tarayıcı üzerinden doğrudan çalışan **Web Serial API** ve düşük enerjili **BLE (Bluetooth Low Energy)** haberleşme katmanı entegre edilmiştir.
+
+  4. **Güvenli Kablosuz Yazılım Güncelleme (OTA Firmware & Rollback):**
+    Cihazlara fiziksel müdahaleyi ortadan kaldırmak üzere çift bölumlu (Dual-bank) **OTA (Over-The-Air)** altyapısı kurulmuştur. Güncelleme sırasında bir elektrik kesintisi veya yazılım hatası oluşması durumunda, sistem otomatik olarak kararlı önceki sürüme güvenli bir şekilde geri döner (Rollback mekanizması).
+
+  5. **Bulut ve Veritabanı Senkronizasyonu:**
+    Sistem çalışma logları ve hata geçmişi, hafif siklet **PocketBase** veritabanı altyapısı ile senkronize edilerek bulut tabanlı izlenebilirlik sağlanmıştır.`,
+      pills: ['ESP32', 'State Machine', 'EMA Filter', 'BLE', 'Web Serial API', 'OTA Firmware', 'PocketBase', 'MPU6050']
+    }
+  };
+
+  const projectModal = document.getElementById('project-modal');
+  const projectCategory = document.getElementById('project-modal-category');
+  const projectTitle = document.getElementById('project-modal-title');
+  const projectDescription = document.getElementById('project-modal-description');
+  const projectPills = document.getElementById('project-modal-pills');
+  let lastProjectTrigger = null;
+
+  function formatProjectDescription(description) {
+    return description
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n/g, '<br>');
+  }
+
+  function openProjectModal(projectKey, trigger) {
+    const project = projectDetails[projectKey];
+    if (!project || !projectModal) return;
+
+    projectCategory.textContent = project.category;
+    projectTitle.textContent = project.title;
+    projectDescription.innerHTML = formatProjectDescription(project.desc);
+    projectPills.innerHTML = project.pills.map((pill) => `<span>${pill}</span>`).join('');
+    lastProjectTrigger = trigger;
+    projectModal.hidden = false;
+    document.body.classList.add('modal-open');
+    projectModal.querySelector('.project-modal-close').focus();
+  }
+
+  function closeProjectModal() {
+    if (!projectModal || projectModal.hidden) return;
+    projectModal.hidden = true;
+    document.body.classList.remove('modal-open');
+    lastProjectTrigger?.focus();
+  }
+
+  document.querySelectorAll('.project-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => openProjectModal(trigger.dataset.project, trigger));
+    trigger.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openProjectModal(trigger.dataset.project, trigger);
+      }
+    });
+  });
+
+  projectModal?.querySelectorAll('[data-modal-close]').forEach((element) => {
+    element.addEventListener('click', closeProjectModal);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeProjectModal();
+  });
+</script>
+
 <!-- Copy Handler -->
 <script is:inline>
   function copyText(str, btn) {
@@ -550,6 +785,149 @@ import Layout from '../Layouts/Layout.astro';
     transform: translateY(-4px);
     border-color: #14b8a6 !important;
     box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(20, 184, 166, 0.12);
+  }
+
+  .project-trigger {
+    cursor: pointer;
+  }
+
+  .project-trigger:focus-visible {
+    outline: 2px solid #2dd4bf;
+    outline-offset: 3px;
+  }
+
+  .article-trigger {
+    cursor: pointer;
+  }
+
+  .article-trigger:focus-visible {
+    outline: 2px solid #2dd4bf;
+    outline-offset: 3px;
+  }
+
+  .modal-open {
+    overflow: hidden;
+  }
+
+  .project-modal[hidden] {
+    display: none;
+  }
+
+  .project-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+  }
+
+  .project-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 7, 18, 0.8);
+    backdrop-filter: blur(6px);
+  }
+
+  .project-modal-panel {
+    position: relative;
+    width: min(100%, 760px);
+    max-height: min(90vh, 760px);
+    overflow-y: auto;
+    padding: 2rem;
+    background: #101626;
+    border: 1px solid #2dd4bf;
+    border-radius: 16px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6), 0 0 35px rgba(20, 184, 166, 0.14);
+    animation: modalIn 0.2s ease-out;
+  }
+
+  .project-modal-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.9rem;
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    border-radius: 8px;
+    background: #172036;
+    color: #cbd5e1;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .project-modal-close:hover,
+  .project-modal-close:focus-visible {
+    background: #0d9488;
+    color: #fff;
+  }
+
+  .project-modal-category {
+    display: block;
+    padding-right: 2.5rem;
+    color: #2dd4bf;
+    font: 700 0.75rem 'JetBrains Mono', monospace;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .article-modal-date {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid #23304a;
+    border-radius: 8px;
+    background: #090d16;
+    color: #2dd4bf;
+    font: 700 0.75rem 'JetBrains Mono', monospace;
+  }
+
+  .project-modal-panel h2 {
+    margin: 0.5rem 2.5rem 1rem 0;
+    color: #fff;
+    font-size: clamp(1.35rem, 4vw, 1.8rem);
+    line-height: 1.25;
+  }
+
+  .project-modal-description {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .project-modal-description strong {
+    color: #f8fafc;
+    font-weight: 800;
+  }
+
+  .project-modal-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #1e293b;
+  }
+
+  .project-modal-pills span {
+    padding: 0.35rem 0.7rem;
+    border: 1px solid #23304a;
+    border-radius: 8px;
+    background: #090d16;
+    color: #cbd5e1;
+    font: 600 0.75rem 'JetBrains Mono', monospace;
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @media (max-width: 640px) {
+    .project-modal-panel {
+      padding: 1.5rem;
+    }
   }
 
   .system-pill {
