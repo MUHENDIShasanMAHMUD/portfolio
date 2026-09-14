@@ -215,6 +215,8 @@ const {
           el.innerHTML = el.getAttribute(`data-${lang}`);
         });
 
+        window.dispatchEvent(new CustomEvent('languagechange', { detail: lang }));
+
         try { localStorage.setItem('hm-lang', lang); } catch (e) {}
         setTimeout(() => {
           const active = document.querySelector('.nav-tab-btn.font-bold') || tabButtons[0];

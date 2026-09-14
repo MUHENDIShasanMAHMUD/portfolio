@@ -603,6 +603,166 @@ Bu katmanlı OTA mimarisi; operasyonel kesintileri sıfıra indirir, sahaya müd
     }
   };
 
+  const modalTranslations = {
+    projects: {
+      pt500: {
+        en: {
+          category: 'ARM Cortex-M0+ & Industrial Driver Architecture',
+          title: 'PT500 Motor Driver System',
+          desc: `PT500 is a high-performance motor driver and telemetry architecture built from the ground up around the STM32G030 (ARM Cortex-M0+) for industrial motion control and demanding field conditions.
+
+⚙️ **In-depth Technical Architecture and Hardware Integration:**
+
+1. **Bare-Metal UART & Ring Buffer Driver Architecture:** Register-level UART communication and interrupt-based circular buffering provide continuous command reception without packet loss at high baud rates.
+
+2. **Industrial RS-485 (Half-Duplex) & TDMA Protocol:** A deterministic TDMA layer prevents collisions in multi-drop networks and gives every driver an ordered communication slot.
+
+3. **Wireless Telemetry & nRF24L01+ Integration:** The RF module enables live status monitoring, debugging, and remote parameter configuration where wired communication is limited.
+
+4. **Motion Control & Safety Mechanisms:** Soft-start ramp acceleration limits mechanical shock, while over-current protection and EEPROM error logging preserve critical fault information.
+
+🎯 **Result:** A stable, low-overhead communication and motion-control foundation for noisy industrial environments.`,
+          pills: ['STM32G030', 'RS-485', 'TDMA', 'Bare-Metal', 'nRF24L01+', 'Ring Buffer', 'H-Bridge', 'EEPROM Log']
+        },
+        ar: {
+          category: 'معمارية ARM Cortex-M0+ ومحركات صناعية',
+          title: 'نظام قيادة المحركات PT500',
+          desc: `PT500 هو نظام عالي الأداء لقيادة المحركات والقياس عن بعد، تم تطويره من الصفر اعتماداً على المتحكم STM32G030 (ARM Cortex-M0+) للتحكم بالحركة الصناعية والظروف الميدانية الصعبة.
+
+⚙️ **المعمارية التقنية وتكامل العتاد:**
+
+1. **معمارية UART وRing Buffer بمستوى Bare-Metal:** تم تصميم الاتصال على مستوى السجلات مع استقبال يعتمد على المقاطعات لمنع فقدان الحزم عند سرعات النقل العالية.
+
+2. **RS-485 نصف مزدوج وبروتوكول TDMA:** تمنع طبقة TDMA الحتمية تصادم البيانات في شبكات الأجهزة المتعددة وتمنح كل محرك دوره في الاتصال.
+
+3. **القياس اللاسلكي وتكامل nRF24L01+:** يتيح النظام مراقبة الحالة لحظياً وتصحيح الأخطاء وضبط المعاملات عن بعد.
+
+4. **التحكم بالحركة وآليات الأمان:** تمنع زيادة التسارع التدريجية الصدمات الميكانيكية، بينما تسجل حماية التيار الزائد وأخطاء EEPROM الأعطال المهمة.
+
+🎯 **النتيجة:** أساس مستقر ومنخفض الاستهلاك للاتصال والتحكم بالحركة في البيئات الصناعية المليئة بالتشويش.`,
+          pills: ['STM32G030', 'RS-485', 'TDMA', 'Bare-Metal', 'nRF24L01+', 'Ring Buffer', 'H-Bridge', 'EEPROM Log']
+        }
+      },
+      kts200: {
+        en: {
+          category: 'ESP32 & IoT Automation and Telemetry Architecture',
+          title: 'KTS200 Caravan Auto-Leveling',
+          desc: `KTS200 is a highly reliable ESP32-based embedded control and telemetry system that makes caravan leveling fully autonomous in demanding terrain.
+
+⚙️ **In-depth Technical Architecture and Algorithm Details:**
+
+1. **Nine-Phase Deterministic State Machine:** Calibration, positioning, precision leveling, safety locks, and fault handling are managed through nine controlled phases with fail-safe transitions.
+
+2. **Sensor Filtering & Tilt Analysis:** Raw accelerometer and tilt data is processed with an EMA digital filter to produce stable angular coordinates in real time.
+
+3. **Wireless Interface & Web Serial / BLE:** Browser-based Web Serial API and low-energy BLE provide field testing, calibration, and live monitoring without a separate application.
+
+4. **Secure OTA Firmware & Rollback:** Dual-bank updates allow interrupted or invalid firmware images to fall back automatically to the last stable version.
+
+5. **Cloud and Database Synchronization:** Runtime logs and fault history are synchronized through PocketBase for cloud traceability.`,
+          pills: ['ESP32', 'State Machine', 'EMA Filter', 'BLE', 'Web Serial API', 'OTA Firmware', 'PocketBase', 'MPU6050']
+        },
+        ar: {
+          category: 'معمارية أتمتة ESP32 وإنترنت الأشياء والقياس عن بعد',
+          title: 'نظام التسوية الآلية للكرفان KTS200',
+          desc: `KTS200 هو نظام تحكم وقياس عن بعد مدمج عالي الاعتمادية يعتمد على ESP32، ويجعل تسوية الكرفان أوتوماتيكية بالكامل في التضاريس الصعبة.
+
+⚙️ **المعمارية التقنية وتفاصيل الخوارزميات:**
+
+1. **آلة حالة حتمية من تسع مراحل:** تتم إدارة المعايرة والتموضع والتسوية الدقيقة وأقفال الأمان ومعالجة الأخطاء ضمن مراحل محددة مع انتقال آمن عند الأعطال.
+
+2. **فلترة الحساسات وتحليل الميل:** تمرر بيانات التسارع والميل الخام عبر مرشح EMA لإنتاج إحداثيات زاوية مستقرة لحظياً.
+
+3. **الواجهة اللاسلكية وWeb Serial وBLE:** تتيح طبقتا Web Serial وBLE الاختبار والمعايرة ومراقبة البيانات دون تطبيق منفصل.
+
+4. **تحديث OTA الآمن والاسترجاع:** تسمح بنية Dual-bank بالعودة تلقائياً إلى الإصدار المستقر عند انقطاع التحديث أو فشل البرنامج.
+
+5. **مزامنة السحابة وقاعدة البيانات:** تتم مزامنة سجلات التشغيل والأخطاء عبر PocketBase لتوفير إمكانية التتبع السحابي.`,
+          pills: ['ESP32', 'State Machine', 'EMA Filter', 'BLE', 'Web Serial API', 'OTA Firmware', 'PocketBase', 'MPU6050']
+        }
+      }
+    },
+    articles: {
+      isr_ringbuffer: {
+        en: {
+          category: 'Embedded Systems & Low-Level Architecture',
+          title: 'Hardware Interrupts (ISR) and Ring Buffer Management in Embedded Systems',
+          date: 'August 2026',
+          desc: `UART is one of the most critical paths for communication between a microcontroller and the outside world. Blocking HAL functions can cause irreversible packet loss in real-time systems. This article examines interrupt service routines and circular buffers at bare-metal level.
+
+📌 **1. Why Standard Approaches Fall Short:** Polling and heavy HAL queues can miss incoming bytes while the main loop is busy with sensors, displays, PID calculations, or cloud communication, causing RX overrun errors.
+
+📌 **2. Interrupt-Driven Asynchronous Architecture:** A USART interrupt is triggered as soon as a byte arrives. The ISR stays minimal: it reads the byte, writes it to the ring buffer, and advances the index without delays or complex calculations.
+
+📌 **3. Ring Buffer Algorithm:** A fixed-size array uses a Head pointer written by the ISR and a Tail pointer consumed by the main loop. This preserves FIFO order while both operations run at their own pace.
+
+📌 **4. Critical Sections and Atomic Operations:** Temporary interrupt masking protects multi-byte pointer updates from race conditions.
+
+🎯 **Result:** A low-resource and stable communication layer that remains reliable under industrial noise and heavy traffic.`,
+          pills: ['UART ISR', 'Ring Buffer', 'Bare-Metal', 'C/C++', 'Memory Management', 'FIFO', 'Interrupt Handling']
+        },
+        ar: {
+          category: 'الأنظمة المدمجة والمعمارية منخفضة المستوى',
+          title: 'مقاطعات العتاد (ISR) وإدارة Ring Buffer في الأنظمة المدمجة',
+          date: 'أغسطس 2026',
+          desc: `يعد UART أحد أهم مسارات الاتصال بين المتحكم والعالم الخارجي. وقد تؤدي دوال HAL الحاجزة إلى فقدان حزم لا يمكن تعويضه في الأنظمة الزمنية الحقيقية. يستعرض هذا المقال تصميم ISR والمخازن الحلقية بمستوى Bare-Metal.
+
+📌 **1. لماذا لا تكفي الأساليب التقليدية؟:** قد يؤدي Polling وطول طوابير HAL إلى فقدان البايتات أثناء انشغال الحلقة الرئيسية بقراءة الحساسات أو الحسابات أو الإرسال السحابي، مما يسبب RX Overrun.
+
+📌 **2. المعمارية غير المتزامنة المعتمدة على المقاطعات:** يتم تشغيل مقاطعة USART عند وصول كل بايت. تبقى ISR قصيرة؛ تقرأ البايت وتضعه في Ring Buffer وتحرك المؤشر دون تأخير أو عمليات معقدة.
+
+📌 **3. خوارزمية Ring Buffer:** يستخدم مصفوفة ثابتة ومؤشرين: Head تكتبه ISR وTail تقرؤه الحلقة الرئيسية، مع الحفاظ على ترتيب FIFO.
+
+📌 **4. المناطق الحرجة والعمليات الذرية:** يتم تعطيل المقاطعات مؤقتاً لحماية تحديثات المؤشرات متعددة البايت من Race Conditions.
+
+🎯 **النتيجة:** بنية اتصال مستقرة ومنخفضة الاستهلاك حتى مع التشويش الصناعي وكثافة البيانات العالية.`,
+          pills: ['UART ISR', 'Ring Buffer', 'Bare-Metal', 'C/C++', 'Memory Management', 'FIFO', 'Interrupt Handling']
+        }
+      },
+      ota_architecture: {
+        en: {
+          category: 'Industrial IoT & Secure Update Architecture',
+          title: 'Over-The-Air Firmware Upgrade Architecture for Industrial Devices',
+          date: 'July 2026',
+          desc: `Updating active industrial automation and IoT devices with a physical programmer is expensive and often impossible. This article presents a fault-tolerant and secure BLE/Wi-Fi OTA design for ESP32.
+
+📌 **1. Dual-Bank Flash Partitioning:** The system uses otadata, a stable app0 factory area, and an app1 OTA area. New firmware is written to the inactive partition while the main operation continues.
+
+📌 **2. Binary Transfer and Cryptographic Verification:** The .bin file is transferred in chunks over BLE or local Wi-Fi. MD5 or SHA-256 integrity checks reject incomplete or corrupted updates.
+
+📌 **3. Safe Rollback and Fault Tolerance:** After the first boot, the new image must pass a sanity check and confirm stable operation. A crash or watchdog timeout makes the bootloader restore the previous stable version automatically.
+
+📌 **4. Local Web Serial and BLE Alternative:** Technicians can apply updates through a lightweight browser or phone interface where internet access is unavailable.
+
+🎯 **Result:** Reduced operational downtime, lower field-service cost, and enterprise-grade remote lifecycle management.`,
+          pills: ['ESP32', 'OTA Firmware', 'BLE / Wi-Fi', 'Rollback Mechanism', 'Bootloader', 'Partition Table', 'IoT Security']
+        },
+        ar: {
+          category: 'إنترنت الأشياء الصناعي ومعمارية التحديث الآمن',
+          title: 'معمارية تحديث البرامج اللاسلكي OTA للأجهزة الصناعية',
+          date: 'يوليو 2026',
+          desc: `يعد تحديث أجهزة الأتمتة الصناعية وإنترنت الأشياء العاملة ميدانياً عبر مبرمج مادي مكلفاً وغالباً مستحيلاً. يعرض هذا المقال تصميم OTA آمناً ومتحملاً للأخطاء عبر BLE وWi-Fi لمنصة ESP32.
+
+📌 **1. تقسيم الذاكرة Dual-Bank:** يتكون النظام من otadata ومنطقة app0 مستقرة ومنطقة app1 للتحديث. يكتب البرنامج الجديد في القسم غير النشط دون إيقاف العمليات الأساسية.
+
+📌 **2. نقل الملف والتحقق التشفيري:** ينقل ملف .bin على شكل أجزاء عبر BLE أو Wi-Fi محلي، ثم يتم استخدام MD5 أو SHA-256 لرفض أي تحديث ناقص أو تالف.
+
+📌 **3. الاسترجاع الآمن وتحمل الأخطاء:** بعد الإقلاع الأول يجب أن يجتاز الإصدار الجديد اختبار الاستقرار. عند حدوث Crash أو تجاوز Watchdog يعيد Bootloader الإصدار السابق تلقائياً.
+
+📌 **4. بديل Web Serial وBLE المحلي:** يستطيع الفني تطبيق التحديث من المتصفح أو الهاتف في المواقع التي لا يتوفر فيها الإنترنت.
+
+🎯 **النتيجة:** تقليل التوقف التشغيلي وتكاليف الخدمة الميدانية وتوفير إدارة آمنة لدورة حياة الأجهزة عن بعد.`,
+          pills: ['ESP32', 'OTA Firmware', 'BLE / Wi-Fi', 'Rollback Mechanism', 'Bootloader', 'Partition Table', 'IoT Security']
+        }
+      }
+    }
+  };
+
+  function getModalLanguage() {
+    const language = document.documentElement.getAttribute('lang');
+    return ['tr', 'en', 'ar'].includes(language) ? language : 'tr';
+  }
+
   const articleModal = document.getElementById('article-modal');
   const articleCategory = document.getElementById('article-modal-category');
   const articleTitle = document.getElementById('article-modal-title');
@@ -614,12 +774,13 @@ Bu katmanlı OTA mimarisi; operasyonel kesintileri sıfıra indirir, sahaya müd
   function openArticleModal(articleKey, trigger) {
     const article = articleDatabase[articleKey];
     if (!article || !articleModal) return;
+    const localizedArticle = modalTranslations.articles[articleKey]?.[getModalLanguage()] || article;
 
-    articleCategory.textContent = article.category;
-    articleTitle.textContent = article.title;
-    articleDate.textContent = article.date;
-    articleDescription.innerHTML = formatProjectDescription(article.desc);
-    articlePills.innerHTML = article.pills.map((pill) => `<span>${pill}</span>`).join('');
+    articleCategory.textContent = localizedArticle.category;
+    articleTitle.textContent = localizedArticle.title;
+    articleDate.textContent = localizedArticle.date;
+    articleDescription.innerHTML = formatProjectDescription(localizedArticle.desc);
+    articlePills.innerHTML = localizedArticle.pills.map((pill) => `<span>${pill}</span>`).join('');
     lastArticleTrigger = trigger;
     articleModal.hidden = false;
     document.body.classList.add('modal-open');
@@ -648,6 +809,19 @@ Bu katmanlı OTA mimarisi; operasyonel kesintileri sıfıra indirir, sahaya müd
   });
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeArticleModal();
+  });
+
+  window.addEventListener('languagechange', (event) => {
+    const closeLabel = { tr: 'Kapat', en: 'Close', ar: 'إغلاق' }[event.detail] || 'Close';
+    document.querySelectorAll('.project-modal-close').forEach((button) => {
+      button.setAttribute('aria-label', closeLabel);
+    });
+    if (!articleModal?.hidden && lastArticleTrigger) {
+      openArticleModal(lastArticleTrigger.dataset.article, lastArticleTrigger);
+    }
+    if (!projectModal?.hidden && lastProjectTrigger) {
+      openProjectModal(lastProjectTrigger.dataset.project, lastProjectTrigger);
+    }
   });
 </script>
 
@@ -718,11 +892,12 @@ Bu katmanlı OTA mimarisi; operasyonel kesintileri sıfıra indirir, sahaya müd
   function openProjectModal(projectKey, trigger) {
     const project = projectDetails[projectKey];
     if (!project || !projectModal) return;
+    const localizedProject = modalTranslations.projects[projectKey]?.[getModalLanguage()] || project;
 
-    projectCategory.textContent = project.category;
-    projectTitle.textContent = project.title;
-    projectDescription.innerHTML = formatProjectDescription(project.desc);
-    projectPills.innerHTML = project.pills.map((pill) => `<span>${pill}</span>`).join('');
+    projectCategory.textContent = localizedProject.category;
+    projectTitle.textContent = localizedProject.title;
+    projectDescription.innerHTML = formatProjectDescription(localizedProject.desc);
+    projectPills.innerHTML = localizedProject.pills.map((pill) => `<span>${pill}</span>`).join('');
     lastProjectTrigger = trigger;
     projectModal.hidden = false;
     document.body.classList.add('modal-open');
