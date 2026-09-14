@@ -1,0 +1,253 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Hasan Mahmud — Mekatronik ve Gömülü Sistemler Mühendisi.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="tr" id="html-root" dir="ltr" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b0f19" />
+    <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .no-scrollbar {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Sliding Pill Track */
+      .nav-track {
+        position: relative;
+      }
+      #nav-indicator {
+        position: absolute;
+        top: 6px;
+        bottom: 6px;
+        left: 0;
+        border-radius: 9999px;
+        background: #0d9488;
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), width 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .nav-tab-btn {
+        position: relative;
+        z-index: 2;
+        transition: color 0.2s ease;
+      }
+
+      /* Subtle Marquee Animation */
+      @keyframes marqueeFlow {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .marquee-inner {
+        display: flex;
+        width: max-content;
+        animation: marqueeFlow 26s linear infinite;
+      }
+      .marquee-inner:hover {
+        animation-play-state: paused;
+      }
+    </style>
+  </head>
+
+  <body class="bg-[#090d16] text-slate-100 min-h-screen flex flex-col font-['Plus_Jakarta_Sans','Alexandria',sans-serif] selection:bg-teal-500 selection:text-slate-950 relative overflow-x-hidden">
+    
+    <!-- Ambient Tech Glow -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[340px] bg-teal-500/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+    <div class="fixed inset-0 pointer-events-none -z-10 bg-[linear-gradient(to_right,rgba(30,41,59,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(30,41,59,0.2)_1px,transparent_1px)] bg-[size:36px_36px]"></div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 border-b border-slate-800/90 bg-[#090d16]/90 backdrop-blur-md">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-wrap md:flex-nowrap items-center justify-between gap-3 py-3 md:py-0 md:h-18">
+        
+        <!-- Logo -->
+        <button
+          type="button"
+          class="flex items-center gap-3 shrink-0 text-left rtl:text-right cursor-pointer"
+          onclick="window.switchTab('tab-home')"
+          aria-label="Ana Sayfa"
+        >
+          <img
+            src="/protfilo.jpeg"
+            alt="Hasan Mahmud"
+            class="w-10 h-10 rounded-xl object-cover border border-teal-500/40 shadow-[0_0_15px_rgba(13,148,136,0.25)] shrink-0"
+          />
+          <div>
+            <span class="font-bold text-sm text-white block tracking-tight" data-tr="Müh. Hasan Mahmud" data-en="Eng. Hasan Mahmud" data-ar="المهندس حسن محمود">Müh. Hasan Mahmud</span>
+            <span class="text-[11px] text-teal-400 font-['JetBrains_Mono'] block">Mechatronics &amp; Embedded</span>
+          </div>
+        </button>
+
+        <!-- Tab Navigation with Sliding Pill -->
+        <nav
+          class="nav-track order-3 md:order-none w-full md:w-auto overflow-x-auto no-scrollbar flex items-center gap-1 bg-[#111728] p-1.5 rounded-full border border-slate-800 text-xs font-semibold"
+          aria-label="Bölümler"
+        >
+          <div id="nav-indicator"></div>
+          <button class="nav-tab-btn shrink-0 px-4 py-2 rounded-full text-slate-300 hover:text-white" data-target="tab-home" data-tr="Ana Sayfa" data-en="Home" data-ar="الرئيسية">Ana Sayfa</button>
+          <button class="nav-tab-btn shrink-0 px-4 py-2 rounded-full text-slate-300 hover:text-white" data-target="tab-resume" data-tr="Özgeçmiş" data-en="Resume / CV" data-ar="السيرة الذاتية">Özgeçmiş</button>
+          <button class="nav-tab-btn shrink-0 px-4 py-2 rounded-full text-slate-300 hover:text-white" data-target="tab-projects" data-tr="Projeler" data-en="Projects" data-ar="المشاريع">Projeler</button>
+          <button class="nav-tab-btn shrink-0 px-4 py-2 rounded-full text-slate-300 hover:text-white" data-target="tab-articles" data-tr="Makaleler" data-en="Articles" data-ar="المقالات">Makaleler</button>
+          <button class="nav-tab-btn shrink-0 px-4 py-2 rounded-full text-slate-300 hover:text-white" data-target="tab-contact" data-tr="İletişim" data-en="Contact" data-ar="التواصل">İletişim</button>
+        </nav>
+
+        <!-- 3-Language Selector -->
+        <div class="flex items-center border border-slate-800 rounded-xl p-1 bg-[#111728] text-xs font-['JetBrains_Mono'] font-bold shrink-0">
+          <button id="btn-tr" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-colors">TR</button>
+          <button id="btn-en" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-colors">EN</button>
+          <button id="btn-ar" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-colors">AR</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="flex-1 max-w-6xl mx-auto px-4 md:px-8 py-10 w-full">
+      <slot />
+    </main>
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      type="button"
+      aria-label="Yukarı çık"
+      class="fixed bottom-6 right-6 z-40 p-3 rounded-xl bg-slate-800/90 border border-slate-700 text-teal-400 shadow-xl opacity-0 translate-y-3 pointer-events-none transition-all duration-300 hover:bg-slate-700 hover:text-white"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+      </svg>
+    </button>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/60 bg-[#070a12] py-8 text-center text-xs text-slate-500 font-['JetBrains_Mono']">
+      <p>© {new Date().getFullYear()} Hasan Mahmud | Mechatronics &amp; Embedded Systems Engineer</p>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script is:inline>
+      const validTabs = ['tab-home', 'tab-resume', 'tab-projects', 'tab-articles', 'tab-contact'];
+      const tabButtons = document.querySelectorAll('.nav-tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+      const indicator = document.getElementById('nav-indicator');
+
+      function updateSlidingPill(activeBtn) {
+        if (!activeBtn || !indicator) return;
+        indicator.style.opacity = '1';
+        indicator.style.width = activeBtn.offsetWidth + 'px';
+        indicator.style.transform = `translateX(${activeBtn.offsetLeft}px)`;
+      }
+
+      function switchTab(targetId) {
+        if (!validTabs.includes(targetId)) targetId = 'tab-home';
+
+        tabContents.forEach((panel) => {
+          panel.classList.toggle('hidden', panel.id !== targetId);
+        });
+
+        let activeBtn = null;
+        tabButtons.forEach((btn) => {
+          const isActive = btn.getAttribute('data-target') === targetId;
+          btn.classList.toggle('text-white', isActive);
+          btn.classList.toggle('font-bold', isActive);
+          btn.classList.toggle('text-slate-300', !isActive);
+          if (isActive) activeBtn = btn;
+        });
+
+        updateSlidingPill(activeBtn);
+        history.replaceState(null, '', '#' + targetId);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      tabButtons.forEach((btn) => {
+        btn.addEventListener('click', () => switchTab(btn.getAttribute('data-target')));
+      });
+
+      window.switchTab = switchTab;
+      window.addEventListener('resize', () => {
+        const active = document.querySelector('.nav-tab-btn.font-bold') || tabButtons[0];
+        updateSlidingPill(active);
+      });
+
+      // Trilingual Switcher
+      const root = document.getElementById('html-root');
+      const btnTr = document.getElementById('btn-tr');
+      const btnEn = document.getElementById('btn-en');
+      const btnAr = document.getElementById('btn-ar');
+
+      function setLang(lang) {
+        const isAr = lang === 'ar';
+        root.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+        root.setAttribute('lang', lang);
+
+        [btnTr, btnEn, btnAr].forEach((b) => {
+          b.className = 'px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-colors';
+        });
+
+        if (lang === 'tr') btnTr.className = 'px-2.5 py-1 rounded-lg bg-teal-500 text-slate-950 font-bold';
+        if (lang === 'en') btnEn.className = 'px-2.5 py-1 rounded-lg bg-teal-500 text-slate-950 font-bold';
+        if (lang === 'ar') btnAr.className = 'px-2.5 py-1 rounded-lg bg-teal-500 text-slate-950 font-bold';
+
+        document.querySelectorAll(`[data-${lang}]`).forEach((el) => {
+          el.innerHTML = el.getAttribute(`data-${lang}`);
+        });
+
+        try { localStorage.setItem('hm-lang', lang); } catch (e) {}
+        setTimeout(() => {
+          const active = document.querySelector('.nav-tab-btn.font-bold') || tabButtons[0];
+          updateSlidingPill(active);
+        }, 50);
+      }
+
+      btnTr.addEventListener('click', () => setLang('tr'));
+      btnEn.addEventListener('click', () => setLang('en'));
+      btnAr.addEventListener('click', () => setLang('ar'));
+
+      // Back to Top Button
+      const bttBtn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          bttBtn.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
+          bttBtn.classList.add('opacity-100', 'translate-y-0');
+        } else {
+          bttBtn.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
+          bttBtn.classList.remove('opacity-100', 'translate-y-0');
+        }
+      });
+      bttBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // Initialization
+      document.addEventListener('DOMContentLoaded', () => {
+        let savedLang = 'tr';
+        try { savedLang = localStorage.getItem('hm-lang') || 'tr'; } catch (e) {}
+        setLang(['tr', 'en', 'ar'].includes(savedLang) ? savedLang : 'tr');
+
+        const startTab = window.location.hash.replace('#', '');
+        switchTab(validTabs.includes(startTab) ? startTab : 'tab-home');
+      });
+    </script>
+  </body>
+</html>

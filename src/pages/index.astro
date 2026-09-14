@@ -1,17 +1,644 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Hasan Mahmud — Mechatronics & Embedded Systems Engineer">
+
+  <!-- ================= TAB 1: HOME ================= -->
+  <section id="tab-home" class="tab-content">
+    
+    <!-- Hero Section (Static / No Hover Jump) -->
+    <div class="pt-4 pb-8 max-w-3xl">
+      <div class="inline-flex items-center gap-2 text-xs font-bold text-teal-400 mb-4 uppercase tracking-wide">
+        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+        <span data-tr="MEKATRONİK & GÖMÜLÜ SİSTEMLER" data-en="MECHATRONICS & EMBEDDED" data-ar="ميكاترونكس وأنظمة مدمجة">MEKATRONİK & GÖMÜLÜ SİSTEMLER</span>
+      </div>
+
+      <h1
+        class="text-3xl md:text-5xl font-extrabold text-white leading-tight tracking-tight mb-5"
+        data-tr="Donanım hassasiyeti ile <span class='text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400'>yazılım mimarisini</span> buluşturuyorum."
+        data-en="Integrating Hardware Precision with <span class='text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400'>Software Architecture</span>."
+        data-ar="أهندس تكاملاً دقيقاً بين عتاد الأنظمة المدمجة و<span class='text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400'>المعمارية البرمجية</span>."
+      >
+        Donanım hassasiyeti ile <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">yazılım mimarisini</span> buluşturuyorum.
+      </h1>
+
+      <p
+        class="text-base text-slate-300 leading-relaxed max-w-3xl mb-8"
+        data-tr="Necmettin Erbakan Üniversitesi Mekatronik Mühendisliği mezunuyum. Gömülü sistemler, mikrodenetleyici mimarileri (STM32, ESP32) ve IoT haberleşme altyapıları üzerine 1.5 yıllık uygulamalı Ar-Ge deneyimine sahibim."
+        data-en="Mechatronics Engineering graduate from Necmettin Erbakan University with 1.5 years of practical R&D experience in embedded systems, microcontroller architectures (STM32, ESP32), and IoT telemetry platforms."
+        data-ar="خريج هندسة الميكاترونكس من جامعة نجم الدين أربكان. أمتلك 1.5 سنة من الخبرة العملية في البحث والتطوير وهندسة البرمجيات المدمجة (STM32، ESP32) وتكامل العتاد وبنى إنترنت الأشياء IoT."
+      >
+        Necmettin Erbakan Üniversitesi Mekatronik Mühendisliği mezunuyum. Gömülü sistemler, mikrodenetleyici mimarileri (STM32, ESP32) ve IoT haberleşme altyapıları üzerine 1.5 yıllık uygulamalı Ar-Ge deneyimine sahibim.
+      </p>
+
+      <div class="flex gap-4 flex-wrap">
+        <button
+          type="button"
+          onclick="window.switchTab('tab-projects')"
+          class="bg-teal-500 hover:bg-teal-400 text-slate-950 px-6 py-3 rounded-xl font-bold text-sm transition-all cursor-pointer shadow-lg shadow-teal-500/20"
+        >
+          <span data-tr="Projeleri Gör" data-en="Explore Projects" data-ar="استعراض المشاريع">Projeleri Gör</span> →
+        </button>
+        <button
+          type="button"
+          onclick="window.switchTab('tab-contact')"
+          class="bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 px-6 py-3 rounded-xl font-bold text-sm transition-colors cursor-pointer"
+        >
+          <span data-tr="İletişime Geç" data-en="Get in Touch" data-ar="تواصل معي">İletişime Geç</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Infinite Auto-Moving Marquee (Claude Original Fluid Track) -->
+    <div class="marquee-wrapper mb-10">
+      <div class="marquee-slider">
+        <span class="marquee-badge"><span class="badge-dot"></span>STM32G030</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>ESP32</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>Bare-Metal C/C++</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>RS-485 / Modbus</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>BLE &amp; Web Serial</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>FreeRTOS</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>TDMA Protocol</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>OTA Firmware</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>AI Vibe Coding</span>
+
+        <!-- Duplicated Stream for Continuous Loop -->
+        <span class="marquee-badge"><span class="badge-dot"></span>STM32G030</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>ESP32</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>Bare-Metal C/C++</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>RS-485 / Modbus</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>BLE &amp; Web Serial</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>FreeRTOS</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>TDMA Protocol</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>OTA Firmware</span>
+        <span class="marquee-badge"><span class="badge-dot"></span>AI Vibe Coding</span>
+      </div>
+    </div>
+
+    <!-- 4 Metrics Overview -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+      <div class="interactive-card p-6">
+        <div class="text-3xl font-extrabold text-teal-400 font-['JetBrains_Mono']">1.5+</div>
+        <div class="text-xs font-semibold text-slate-300 mt-2" data-tr="Yıl Pratik Ar-Ge" data-en="Years Practical R&D" data-ar="سنوات خبرة بحث وتطوير">Yıl Pratik Ar-Ge</div>
+      </div>
+      <div class="interactive-card p-6">
+        <div class="text-3xl font-extrabold text-teal-400 font-['JetBrains_Mono']">TÜBİTAK</div>
+        <div class="text-xs font-semibold text-slate-300 mt-2" data-tr="Ulusal Ar-Ge Onayı" data-en="National Acceptance" data-ar="اعتماد مشاريع وطنية">Ulusal Ar-Ge Onayı</div>
+      </div>
+      <div class="interactive-card p-6">
+        <div class="text-3xl font-extrabold text-teal-400 font-['JetBrains_Mono']">Bare-Metal</div>
+        <div class="text-xs font-semibold text-slate-300 mt-2" data-tr="STM32 &amp; UART ISR" data-en="STM32 &amp; UART ISR" data-ar="مشغلات منخفضة المستوى">STM32 &amp; UART ISR</div>
+      </div>
+      <div class="interactive-card p-6">
+        <div class="text-3xl font-extrabold text-teal-400 font-['JetBrains_Mono']">IoT &amp; OTA</div>
+        <div class="text-xs font-semibold text-slate-300 mt-2" data-tr="ESP32 ve BLE Ağları" data-en="ESP32 &amp; BLE Telemetry" data-ar="تحكم ومزامنة لاسلكية">ESP32 ve BLE Ağları</div>
+      </div>
+    </div>
+
+    <!-- Featured Systems -->
+    <div>
+      <h2 class="text-xl font-extrabold text-white mb-5" data-tr="Öne Çıkan Sistemler" data-en="Featured Systems" data-ar="الأنظمة الأبرز">Öne Çıkan Sistemler</h2>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="interactive-card p-7 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-teal-400 uppercase tracking-wide font-['JetBrains_Mono']">ARM Cortex-M0+ &amp; Sürücüler</span>
+            <h3 class="text-lg font-bold text-white mt-2 mb-3">PT500 Motor Sürücü Sistemi</h3>
+            <p
+              class="text-sm text-slate-300 leading-relaxed"
+              data-tr="STM32G030 mikrodenetleyicisi, RS-485 ve nRF24L01+ tabanlı motor sürücü entegrasyonu. TDMA veri çarpışma önleme algoritmaları ve Bare-metal UART sürücü mimarisi."
+              data-en="STM32G030 and RS-485 based motor driver system integration. Includes TDMA collision-avoidance algorithms and bare-metal UART ring buffer drivers."
+              data-ar="نظام قيادة محركات يعتمد على STM32G030 و RS-485 مع خوارزميات TDMA لمنع تصادم البيانات ومشغلات UART المستقلة مع مخازن حلقية."
+            >
+              STM32G030 mikrodenetleyicisi, RS-485 ve nRF24L01+ tabanlı motor sürücü entegrasyonu. TDMA veri çarpışmasını önleyen algoritmalar ve Bare-metal UART sürücü mimarisi.
+            </p>
+          </div>
+          <div class="flex gap-2 flex-wrap mt-6 pt-4 border-t border-slate-800">
+            <span class="system-pill">STM32G030</span>
+            <span class="system-pill">RS-485</span>
+            <span class="system-pill">TDMA</span>
+          </div>
+        </div>
+
+        <div class="interactive-card p-7 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-teal-400 uppercase tracking-wide font-['JetBrains_Mono']">ESP32 &amp; IoT Donanım</span>
+            <h3 class="text-lg font-bold text-white mt-2 mb-3">KTS200 Karavan Otomatik Terazileme</h3>
+            <p
+              class="text-sm text-slate-300 leading-relaxed"
+              data-tr="ESP32 merkezli 9 fazlı durum makinesi (state machine) akışları, eğim/ivme sensörü verilerinin filtrelenmesi, Web Serial ve BLE haberleşmesi ile uzaktan kablosuz yazılım yükleme (OTA) altyapısı."
+              data-en="ESP32-based 9-phase state machine architecture, Web Serial & BLE telemetry, and wireless Over-The-Air (OTA) firmware upgrade infrastructure."
+              data-ar="نظام تسوية آلي بآلة حالة من 9 مراحل على ESP32، ومزامنة BLE و Web Serial وتحديث البرامج الثابتة لاسلكياً (OTA)."
+            >
+              ESP32 merkezli 9 fazlı durum makinesi (state machine) akışları, eğim/ivme sensörü verilerinin filtrelenmesi, Web Serial ve BLE haberleşmesi ile uzaktan kablosuz yazılım güncelleme (OTA) altyapısı.
+            </p>
+          </div>
+          <div class="flex gap-2 flex-wrap mt-6 pt-4 border-t border-slate-800">
+            <span class="system-pill">ESP32</span>
+            <span class="system-pill">BLE</span>
+            <span class="system-pill">OTA Firmware</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TAB 2: RESUME ================= -->
+  <section id="tab-resume" class="tab-content hidden">
+    
+    <div class="pb-5 border-b border-slate-800 mb-8 flex justify-between items-end flex-wrap gap-2">
+      <div>
+        <h2 class="text-2xl font-extrabold text-white" data-tr="Mühendislik Özgeçmişi" data-en="Engineering Resume" data-ar="السيرة الذاتية المهنية">Mühendislik Özgeçmişi</h2>
+        <span class="text-xs text-teal-400 font-['JetBrains_Mono'] font-bold">HASAN MAHMUD — MECHATRONICS &amp; EMBEDDED</span>
+      </div>
+      <span class="text-xs text-slate-400 font-['JetBrains_Mono']">1.5+ YIL AR-GE DENEYİMİ</span>
+    </div>
+
+    <!-- Experience Section with Interactive Cards -->
+    <div class="space-y-4 mb-8">
+      <h3 class="text-xs font-bold text-teal-400 tracking-wider uppercase mb-2" data-tr="// İŞ VE AR-GE DENEYİMİ" data-en="// WORK EXPERIENCE" data-ar="// الخبرة المهنية والبحث والتطوير">// İŞ VE AR-GE DENEYİMİ</h3>
+      
+      <!-- AXI Teknoloji Card -->
+      <div class="interactive-card p-7">
+        <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+          <div>
+            <h4 class="text-lg font-bold text-white" data-tr="Mekatronik Mühendisi (Ortak Eğitim &amp; Ar-Ge Yöneticisi)" data-en="Mechatronics Engineer (Co-op Education & R&D Manager)" data-ar="مهندس ميكاترونكس (تدريب تعاوني ومدير بحث وتطوير)">Mekatronik Mühendisi (Ortak Eğitim &amp; Ar-Ge Yöneticisi)</h4>
+            <div class="text-sm font-semibold text-teal-400 mt-0.5">AXI Teknoloji | İstanbul, Türkiye</div>
+          </div>
+          <span class="text-xs text-slate-300 font-['JetBrains_Mono'] bg-slate-900 border border-slate-700/80 px-3 py-1.5 rounded-lg">Ocak 2025 - Temmuz 2026</span>
+        </div>
+        <ul class="text-slate-300 text-sm leading-8 list-disc ps-5 space-y-1.5 pt-3 border-t border-slate-800">
+          <li data-tr="Akıllı kontrol sistemleri ve gömülü yazılımlar üzerine uçtan uca donanım ve yazılım entegrasyonu süreçlerini yönetti." data-en="Managed end-to-end hardware and software integration processes on Smart Control Systems and Embedded Software." data-ar="إدارة عمليات تكامل الأجهزة والبرمجيات من البداية إلى النهاية في أنظمة التحكم الذكية والبرمجيات المدمجة.">
+            Akıllı kontrol sistemleri ve gömülü yazılımlar üzerine uçtan uca donanım ve yazılım entegrasyonu süreçlerini yönetti.
+          </li>
+          <li data-tr="TÜBİTAK destekli ulusal Ar-Ge projesinde teknik gereksinim analizlerini tamamlayarak kabul onay sürecine liderlik etti." data-en="Served as project engineer in a prestigious national R&D project supported by TÜBİTAK; completed requirements analysis and led formal acceptance approval." data-ar="العمل كمهندس مشروع في مشروع بحث وتطوير وطني مدعوم من TÜBİTAK، وإتمام تحليلات المتطلبات وقيادة القبول الرسمي.">
+            TÜBİTAK destekli ulusal Ar-Ge projesinde teknik gereksinim analizlerini tamamlayarak kabul onay sürecine liderlik etti.
+          </li>
+          <li data-tr="Mikrodenetleyici mimarileri kullanarak sensör veri toplama ve kablosuz telemetri altyapılarını tasarladı ve optimize etti." data-en="Designed and optimized sensor data acquisition and wireless telemetry infrastructures using microcontroller architectures." data-ar="تصميم وتحسين البنى التحتية لجمع بيانات المستشعرات والقياس عن بعد اللاسلكي عبر معماريات المتحكمات الدقيقة.">
+            Mikrodenetleyici mimarileri kullanarak sensör veri toplama ve kablosuz telemetri altyapılarını tasarladı ve optimize etti.
+          </li>
+        </ul>
+      </div>
+
+      <!-- TEKNOFEST Card -->
+      <div class="interactive-card p-7">
+        <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+          <div>
+            <h4 class="text-lg font-bold text-white" data-tr="Aviyonik / Sistem Tasarım Ekip Üyesi (TEKNOFEST İHA)" data-en="Avionics / System Design Team Member (TEKNOFEST UAV)" data-ar="عضو فريق تصميم إلكترونيات الطيران (TEKNOFEST للطائرات المسيرة)">Aviyonik / Sistem Tasarım Ekip Üyesi (TEKNOFEST İHA)</h4>
+            <div class="text-sm font-semibold text-teal-400 mt-0.5">Üniversite Proje Takımı | Konya, Türkiye</div>
+          </div>
+          <span class="text-xs text-slate-300 font-['JetBrains_Mono'] bg-slate-900 border border-slate-700/80 px-3 py-1.5 rounded-lg">Ekim 2023 - Mart 2024</span>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed pt-3 border-t border-slate-800" data-tr="TEKNOFEST İHA projesinin kavramsal tasarım ve alt sistem planlama süreçlerinde görev aldı. Otonom uçuş gereksinimleri doğrultusunda donanım bileşenlerinin seçimi ve teknik fizibilite çalışmalarına katkı sağladı." data-en="Took an active role in conceptual design and sub-system planning of the UAV project. Contributed to hardware selection and feasibility studies matching autonomous flight requirements." data-ar="المشاركة في التصميم المفاهيمي وتخطيط الأنظمة الفرعية لمشروع الطائرة المسيرة (IHA) ضمن TEKNOFEST والمساهمة في دراسات الجدوى واختيار مكونات العتاد.">
+          TEKNOFEST İHA projesinin kavramsal tasarım ve alt sistem planlama süreçlerinde görev aldı. Otonom uçuş gereksinimleri doğrultusunda donanım bileşenlerinin seçimi ve fizibilite çalışmalarına katkı sağladı.
+        </p>
+      </div>
+
+      <!-- Sağır Otomotiv Card -->
+      <div class="interactive-card p-7">
+        <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+          <div>
+            <h4 class="text-lg font-bold text-white" data-tr="Operasyon ve Veri Yönetimi Asistanı" data-en="Operations & Data Management Assistant" data-ar="مساعد عمليات وإدارة بيانات">Operasyon ve Veri Yönetimi Asistanı</h4>
+            <div class="text-sm font-semibold text-teal-400 mt-0.5">Sağır Otomotiv (Tenax Yetkili Servis) | İstanbul</div>
+          </div>
+          <span class="text-xs text-slate-300 font-['JetBrains_Mono'] bg-slate-900 border border-slate-700/80 px-3 py-1.5 rounded-lg">ERP &amp; Operasyon</span>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed pt-3 border-t border-slate-800" data-tr="Servis içi operasyon verilerini analiz etti, dijital ERP/ön muhasebe kayıtlarının takibini yürüttü ve ticari iş akışlarını optimize etti." data-en="Analyzed operational servicing data, maintained ERP/pre-accounting systems, and accelerated commercial workflows." data-ar="تحليل البيانات التشغيلية والمتابعة المنتظمة لأنظمة التسجيل الرقمية (ERP / المحاسبة الأولية) وتحسين سير العمل.">
+          Servis içi operasyon verilerini analiz etti, dijital ERP/ön muhasebe kayıtlarının takibini yürüttü ve ticari iş akışlarını optimize etti.
+        </p>
+      </div>
+    </div>
+
+    <!-- Skills Matrix Grid -->
+    <div class="grid md:grid-cols-3 gap-4 mb-8">
+      <div class="interactive-card p-6">
+        <div class="text-base font-bold text-white mb-3 flex items-center gap-2" data-tr="Haberleşme &amp; Protokoller" data-en="Protocols & Comms" data-ar="الاتصالات والبروتوكولات">
+          <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span> Haberleşme &amp; Protokoller
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="system-pill">UART</span>
+          <span class="system-pill">RS-485</span>
+          <span class="system-pill">I2C / SPI</span>
+          <span class="system-pill">BLE</span>
+          <span class="system-pill">Web Serial API</span>
+        </div>
+      </div>
+
+      <div class="interactive-card p-6">
+        <div class="text-base font-bold text-white mb-3 flex items-center gap-2" data-tr="Donanım &amp; Kontrol" data-en="Hardware & Control" data-ar="العتاد والتحكم">
+          <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span> Donanım &amp; Kontrol
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="system-pill">STM32G030</span>
+          <span class="system-pill">ESP32</span>
+          <span class="system-pill">H-Bridge</span>
+          <span class="system-pill">EMA Filter</span>
+          <span class="system-pill">EEPROM</span>
+          <span class="system-pill">PWM / ADC</span>
+        </div>
+      </div>
+
+      <div class="interactive-card p-6">
+        <div class="text-base font-bold text-white mb-3 flex items-center gap-2" data-tr="Yazılım &amp; Araçlar" data-en="Software & Tools" data-ar="البرمجيات وأدوات التطوير">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span> Yazılım &amp; Araçlar
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="system-pill">C / C++</span>
+          <span class="system-pill">Python</span>
+          <span class="system-pill">PlatformIO</span>
+          <span class="system-pill">STM32CubeIDE</span>
+          <span class="system-pill">KiCad</span>
+          <span class="system-pill">Git</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Card -->
+    <div class="interactive-card p-6">
+      <span class="text-xs font-bold text-teal-400 uppercase tracking-wide font-['JetBrains_Mono']">// EĞİTİM</span>
+      <h4 class="text-lg font-bold text-white mt-1" data-tr="Mekatronik Mühendisliği (Lisans)" data-en="B.Sc. in Mechatronics Engineering" data-ar="بكالوريوس هندسة الميكاترونكس">Mekatronik Mühendisliği (Lisans)</h4>
+      <p class="text-sm text-slate-400 mt-1 font-['JetBrains_Mono']">Necmettin Erbakan Üniversitesi | Konya, Türkiye (2022 - 2026)</p>
+    </div>
+
+  </section>
+
+  <!-- ================= TAB 3: PROJECTS ================= -->
+  <section id="tab-projects" class="tab-content hidden">
+    
+    <div class="pb-5 border-b border-slate-800 mb-8">
+      <h2 class="text-2xl font-extrabold text-white" data-tr="Mühendislik Projeleri" data-en="Engineering Projects" data-ar="المشاريع الهندسية">Mühendislik Projeleri</h2>
+      <p class="text-sm text-slate-400 mt-1" data-tr="Gömülü sistemler, endüstriyel sürücüler ve IoT telemetri mimarileri." data-en="Embedded systems, industrial drivers, and IoT telemetry." data-ar="الأنظمة المدمجة، مشغلات المحركات، وبنى الاتصال عن بعد.">Gömülü sistemler, endüstriyel sürücüler ve IoT telemetri mimarileri.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <!-- PT500 -->
+      <div class="interactive-card p-8 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold text-teal-400 uppercase tracking-wide font-['JetBrains_Mono']">ARM Cortex-M0+ &amp; Sürücü</span>
+          <h3 class="text-xl font-bold text-white mt-2 mb-3">PT500 Motor Sürücü Sistemi</h3>
+          <p
+            class="text-sm text-slate-300 leading-relaxed"
+            data-tr="STM32G030 mikrodenetleyicisi, RS-485 (Half-duplex) ve nRF24L01+ tabanlı motor sürücü sistem entegrasyonu. TDMA veri çarpışmasını önleyen algoritmalar ve Bare-metal UART sürücü mimarisi."
+            data-en="STM32G030, RS-485 (Half-duplex), and nRF24L01+ motor driver integration. Includes TDMA collision-avoidance algorithms and bare-metal UART ring buffer drivers."
+            data-ar="نظام قيادة محركات يعتمد على STM32G030 و RS-485 مع خوارزميات TDMA لمنع تصادم البيانات ومشغلات UART المستقلة مع مخازن حلقية."
+          >
+            STM32G030 mikrodenetleyicisi, RS-485 (Half-duplex) ve nRF24L01+ tabanlı motor sürücü sistem entegrasyonu. TDMA veri çarpışmasını önleyen algoritmalar ve Bare-metal UART sürücü mimarisi.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-6 pt-4 border-t border-slate-800">
+          <span class="system-pill">STM32G030</span>
+          <span class="system-pill">RS-485</span>
+          <span class="system-pill">TDMA</span>
+          <span class="system-pill">Bare-Metal</span>
+        </div>
+      </div>
+
+      <!-- KTS200 -->
+      <div class="interactive-card p-8 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold text-teal-400 uppercase tracking-wide font-['JetBrains_Mono']">ESP32 &amp; IoT Donanım</span>
+          <h3 class="text-xl font-bold text-white mt-2 mb-3">KTS200 Karavan Otomatik Terazileme</h3>
+          <p
+            class="text-sm text-slate-300 leading-relaxed"
+            data-tr="ESP32 tabanlı 9 fazlı durum makinesi (state machine) akışları, eğim/ivme sensörü verilerinin filtrelenmesi, Web Serial ve BLE haberleşmesi ile uzaktan kablosuz yazılım yükleme (OTA) altyapısı."
+            data-en="ESP32-based 9-phase state machine architecture, Web Serial & BLE telemetry, and wireless Over-The-Air (OTA) firmware upgrade infrastructure."
+            data-ar="نظام تسوية آلي بآلة حالة من 9 مراحل على ESP32، وفلترة قراءات حساسات الميل/التسارع، واتصال BLE و Web Serial وتحديث البرامج الثابتة لاسلكياً (OTA)."
+          >
+            ESP32 tabanlı 9 fazlı durum makinesi (state machine) akışları, eğim/ivme sensörü verilerinin filtrelenmesi, Web Serial ve BLE haberleşmesi ile uzaktan kablosuz yazılım güncelleme (OTA) altyapısı.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-6 pt-4 border-t border-slate-800">
+          <span class="system-pill">ESP32</span>
+          <span class="system-pill">BLE</span>
+          <span class="system-pill">OTA Firmware</span>
+          <span class="system-pill">PocketBase</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TAB 4: ARTICLES ================= -->
+  <section id="tab-articles" class="tab-content hidden">
+    
+    <div class="pb-5 border-b border-slate-800 mb-8">
+      <h2 class="text-2xl font-extrabold text-white" data-tr="Teknik Notlar ve Makaleler" data-en="Technical Articles" data-ar="المقالات والبحوث التقنية">Teknik Notlar ve Makaleler</h2>
+      <p class="text-sm text-slate-400 mt-1" data-tr="Gömülü sistemler mimarisi, donanım kesmeleri ve haberleşme protokolleri notları." data-en="Notes on embedded systems architecture, hardware interrupts, and communications." data-ar="تحليلات معمارية الأنظمة المدمجة ومقاطعات العتاد وبروتوكولات الاتصال.">Gömülü sistemler mimarisi ve haberleşme protokolleri notları.</p>
+    </div>
+
+    <div class="space-y-4">
+      <div class="interactive-card p-7">
+        <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+          <h3
+            class="text-lg font-bold text-white hover:text-teal-400 transition-colors"
+            data-tr="Gömülü Sistemlerde Donanım Kesmeleri (ISR) ve Ring Buffer Yönetimi"
+            data-en="Hardware Interrupts (ISR) and Ring Buffer Management in Embedded Systems"
+            data-ar="إدارة مقاطعات العتاد (ISR) وتصميم مخازن الـ Ring Buffer في الأنظمة المدمجة"
+          >
+            Gömülü Sistemlerde Donanım Kesmeleri (ISR) ve Ring Buffer Yönetimi
+          </h3>
+          <span class="text-xs font-bold text-teal-400 font-['JetBrains_Mono'] bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg">Ağustos 2026</span>
+        </div>
+        <p
+          class="text-sm text-slate-300 leading-relaxed"
+          data-tr="Kritik veri kayıplarını engellemek için UART sürücülerinde HAL kütüphanelerinden bağımsız dairesel tamponların (Circular Buffer) tasarımı ve bellek yönetimi."
+          data-en="Design of bare-metal circular buffers independent of HAL libraries in UART drivers to eliminate critical data loss."
+          data-ar="تصميم مخازن حلقية في مشغلات UART بعيداً عن قيود مكتبات HAL لتفادي فقدان البيانات وتأمين الذاكرة."
+        >
+          Kritik veri kayıplarını engellemek için UART sürücülerinde HAL kütüphanelerinden bağımsız dairesel tamponların (Circular Buffer) tasarımı ve bellek yönetimi.
+        </p>
+      </div>
+
+      <div class="interactive-card p-7">
+        <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+          <h3
+            class="text-base font-bold text-white hover:text-teal-400 transition-colors"
+            data-tr="Endüstriyel Cihazlarda Uzaktan Kablosuz Yazılım Yükleme (OTA) Mimarisi"
+            data-en="Over-The-Air (OTA) Firmware Upgrade Architecture in Industrial Devices"
+            data-ar="معمارية التحديث اللاسلكي للبرامج الثابتة (OTA) في الأجهزة الصناعية"
+          >
+            Endüstriyel Cihazlarda Uzaktan Kablosuz Yazılım Yükleme (OTA) Mimarisi
+          </h3>
+          <span class="text-xs font-bold text-teal-400 font-['JetBrains_Mono'] bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg">Temmuz 2026</span>
+        </div>
+        <p
+          class="text-sm text-slate-300 leading-relaxed"
+          data-tr="ESP32 ve BLE/Wi-Fi üzerinden ikili dosya (bin) aktarımı ve hata durumunda önceki sürüme güvenli geri dönme (Rollback) mekanizmaları."
+          data-en="Binary transmission via ESP32 BLE/Wi-Fi and fail-safe rollback mechanisms for industrial devices."
+          data-ar="آليات نقل الملفات الثنائية عبر Wi-Fi/BLE مع آليات استعادة النسخ السابقة عند فشل التحديث لضمان استمرارية التشغيل."
+        >
+          ESP32 ve BLE/Wi-Fi üzerinden ikili dosya aktarımı ve hata durumunda önceki sürüme güvenli geri dönme (Rollback) mekanizmaları.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TAB 5: CONTACT (INTERACTIVE CARDS + VECTOR ICONS) ================= -->
+  <section id="tab-contact" class="tab-content hidden">
+    
+    <div class="pb-5 border-b border-slate-800 mb-8">
+      <h2 class="text-2xl font-extrabold text-white" data-tr="İletişim ve Platformlar" data-en="Contact & Platforms" data-ar="التواصل والمنصات">İletişim ve Platformlar</h2>
+      <p class="text-sm text-slate-400 mt-1" data-tr="Doğrudan kanallar ve resmi sosyal medya profillerim." data-en="Direct communication channels and verified profiles." data-ar="قنوات التواصل المباشر وحساباتي الرسمية المعتمدة.">Doğrudan kanallar ve resmi sosyal medya profillerim.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4 mb-6">
+      
+      <!-- Email -->
+      <div class="interactive-card p-5 flex items-center justify-between gap-3">
+        <a href="mailto:hasan.techlab@gmail.com" class="flex items-center gap-3.5 no-underline min-w-0 flex-1">
+          <div class="brand-box bg-teal-500/15 border border-teal-500/40 text-teal-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <div class="truncate">
+            <div class="text-[14px] font-bold text-white" data-tr="E-Posta" data-en="Email" data-ar="البريد الإلكتروني">E-Posta</div>
+            <div class="text-[13px] font-semibold text-slate-300 truncate">hasan.techlab@gmail.com</div>
+          </div>
+        </a>
+        <button
+          type="button"
+          onclick="copyText('hasan.techlab@gmail.com', this)"
+          class="copy-btn"
+        >
+          Kopyala
+        </button>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="interactive-card p-5 flex items-center justify-between gap-3">
+        <a href="https://wa.me/905510259907" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3.5 no-underline min-w-0 flex-1">
+          <div class="brand-box bg-[#25d366]/15 border border-[#25d366]/40 text-[#25d366]">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.983.541 1.771.813 2.796.813 3.183 0 5.767-2.584 5.768-5.766.001-3.182-2.583-5.77-5.768-5.77zm3.389 8.163c-.141.396-.704.727-1.121.815-.369.077-.852.141-2.47-.528-1.921-.795-3.155-2.753-3.25-2.88-.095-.127-.775-1.032-.775-1.968 0-.936.488-1.396.662-1.587.174-.191.381-.239.508-.239.127 0 .253.001.365.006.118.005.276-.044.431.33.16.388.547 1.332.595 1.43.048.098.08.213.016.34-.064.127-.096.206-.191.318-.095.111-.2.249-.286.334-.096.095-.196.199-.084.391.112.192.498.821 1.068 1.33 1.101.982 1.956 1.285 2.233 1.423.277.138.441.119.605-.07.164-.189.704-.817.892-1.099.188-.282.375-.235.628-.141.254.094 1.609.758 1.884.896.276.138.459.206.527.322.068.116.068.674-.073 1.07z"></path>
+            </svg>
+          </div>
+          <div class="truncate">
+            <div class="text-[14px] font-bold text-[#25d366]">WhatsApp</div>
+            <div class="text-[13px] font-semibold text-slate-300 truncate">+90 551 025 99 07</div>
+          </div>
+        </a>
+        <button
+          type="button"
+          onclick="copyText('+905510259907', this)"
+          class="copy-btn"
+        >
+          Kopyala
+        </button>
+      </div>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/hasantechlab" target="_blank" rel="noopener noreferrer" class="interactive-card p-5 flex items-center justify-between gap-4 no-underline group">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="brand-box bg-[#0a66c2]/15 border border-[#0a66c2]/40 text-[#0a66c2]">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+            </svg>
+          </div>
+          <div class="truncate">
+            <div class="text-[14px] font-bold text-[#38bdf8]">LinkedIn</div>
+            <div class="text-[13px] font-semibold text-slate-300 truncate">in/hasantechlab</div>
+          </div>
+        </div>
+        <span class="text-slate-500 group-hover:text-teal-400 transition-colors text-base font-bold">→</span>
+      </a>
+
+      <!-- GitHub -->
+      <a href="https://github.com/MUHENDISHasanMAHMUD" target="_blank" rel="noopener noreferrer" class="interactive-card p-5 flex items-center justify-between gap-4 no-underline group">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="brand-box bg-slate-800 border border-slate-700 text-white">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+            </svg>
+          </div>
+          <div class="truncate">
+            <div class="text-[14px] font-bold text-white">GitHub</div>
+            <div class="text-[13px] font-semibold text-slate-300 truncate">MUHENDISHasanMAHMUD</div>
+          </div>
+        </div>
+        <span class="text-slate-500 group-hover:text-teal-400 transition-colors text-base font-bold">→</span>
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@HasanTechLab" target="_blank" rel="noopener noreferrer" class="interactive-card p-5 flex items-center justify-between gap-4 no-underline group">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="brand-box bg-[#ef4444]/15 border border-[#ef4444]/40 text-[#ef4444]">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+            </svg>
+          </div>
+          <div class="truncate">
+            <div class="text-[14px] font-bold text-[#ef4444]">YouTube</div>
+            <div class="text-[13px] font-semibold text-slate-300 truncate">@HasanTechLab</div>
+          </div>
+        </div>
+        <span class="text-slate-500 group-hover:text-teal-400 transition-colors text-base font-bold">→</span>
+      </a>
+
+      <!-- Telegram -->
+      <a href="https://t.me/hasan_techlab" target="_blank" rel="noopener noreferrer" class="interactive-card p-5 flex items-center justify-between gap-4 no-underline group">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="brand-box bg-[#229ed9]/15 border border-[#229ed9]/40 text-[#229ed9]">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path>
+            </svg>
+          </div>
+          <div class="truncate">
+            <div class="text-[14px] font-bold text-[#38bdf8]">Telegram</div>
+            <div class="text-[13px] font-semibold text-slate-300 truncate">@hasan_techlab</div>
+          </div>
+        </div>
+        <span class="text-slate-500 group-hover:text-teal-400 transition-colors text-base font-bold">→</span>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/hasan.techlab/" target="_blank" rel="noopener noreferrer" class="interactive-card p-5 flex items-center justify-between gap-4 no-underline group sm:col-span-2">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="brand-box bg-gradient-to-tr from-yellow-500/20 via-pink-500/20 to-purple-500/20 border border-pink-500/40 text-pink-400">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+            </svg>
+          </div>
+          <div class="truncate">
+            <div class="text-[14px] font-bold text-pink-400">Instagram</div>
+            <div class="text-[13px] font-semibold text-slate-300 truncate">@hasan.techlab</div>
+          </div>
+        </div>
+        <span class="text-slate-500 group-hover:text-teal-400 transition-colors text-base font-bold">→</span>
+      </a>
+
+    </div>
+
+    <!-- Location Card -->
+    <div class="interactive-card p-5 flex items-center gap-3 text-sm font-semibold text-slate-300">
+      <span class="text-xl">📍</span>
+      <span data-tr="Konum: İstanbul, Ümraniye / Türkiye" data-en="Location: Istanbul, Umraniye / Turkey" data-ar="الموقع: إسطنبول، عمرانية / تركيا">Konum: İstanbul, Ümraniye / Türkiye</span>
+    </div>
+
+  </section>
+
+</Layout>
+
+<!-- Copy Handler -->
+<script is:inline>
+  function copyText(str, btn) {
+    navigator.clipboard.writeText(str).then(() => {
+      const orig = btn.innerText;
+      btn.innerText = 'Kopyalandı!';
+      btn.classList.add('bg-teal-500', 'text-slate-950', 'border-teal-400');
+      setTimeout(() => {
+        btn.innerText = orig;
+        btn.classList.remove('bg-teal-500', 'text-slate-950', 'border-teal-400');
+      }, 1600);
+    });
+  }
+</script>
+
+<style>
+  /* Exclusive Interactive Cards (Restricted only to content cards) */
+  .interactive-card {
+    background-color: #101626 !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.45);
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .interactive-card:hover {
+    transform: translateY(-4px);
+    border-color: #14b8a6 !important;
+    box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(20, 184, 166, 0.12);
+  }
+
+  .system-pill {
+    display: inline-block;
+    background-color: #090d16;
+    border: 1px solid #23304a;
+    color: #cbd5e1;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+  }
+
+  .brand-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .copy-btn {
+    padding: 6px 14px;
+    border-radius: 8px;
+    background-color: #172036;
+    border: 1px solid #283758;
+    color: #cbd5e1;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .copy-btn:hover {
+    background-color: #0d9488;
+    color: #ffffff;
+    border-color: #0d9488;
+  }
+
+  /* Fixed Marquee Track (Infinite Fluid Motion) */
+  .marquee-wrapper {
+    overflow: hidden;
+    padding: 14px 0;
+    background: #0d1220;
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+    border-radius: 12px;
+  }
+
+  @keyframes streamFlow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee-slider {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    white-space: nowrap;
+    animation: streamFlow 24s linear infinite;
+  }
+  .marquee-slider:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: #cbd5e1;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #14b8a6;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+</style>
