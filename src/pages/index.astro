@@ -370,6 +370,28 @@ import Layout from '../Layouts/Layout.astro';
           ESP32 ve BLE/Wi-Fi üzerinden ikili dosya aktarımı ve hata durumunda önceki sürüme güvenli geri dönme (Rollback) mekanizmaları.
         </p>
       </div>
+
+      <div class="interactive-card article-trigger p-7" role="button" tabindex="0" data-article="performance_optimization" aria-haspopup="dialog">
+        <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+          <h3
+            class="text-lg font-bold text-white hover:text-teal-400 transition-colors"
+            data-tr="Performans Optimizasyonu ve Kullanıcı Deneyimi"
+            data-en="Performance Optimization and User Experience"
+            data-ar="تحسين الأداء وتجربة المستخدم: سرعة استثنائية وأرشفة كاملة"
+          >
+            Performans Optimizasyonu ve Kullanıcı Deneyimi
+          </h3>
+          <span class="text-xs font-bold text-teal-400 font-['JetBrains_Mono'] bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg" data-tr="Eylül 2026" data-en="September 2026" data-ar="سبتمبر 2026">Eylül 2026</span>
+        </div>
+        <p
+          class="text-sm text-slate-300 leading-relaxed"
+          data-tr="Astro ile Core Web Vitals, LCP, görsel optimizasyonu ve otomatik XML sitemap ayarlarını iyileştiren pratik bir vaka çalışması."
+          data-en="A technical case study on Core Web Vitals, LCP, image delivery, Technical SEO, and automatic XML sitemap generation with Astro."
+          data-ar="دراسة حالة تقنية متقدمة حول Core Web Vitals وتقليل LCP وضغط الصور وتحسين SEO التقني وتوليد خريطة الموقع XML تلقائياً باستخدام Astro."
+        >
+          Astro ile Core Web Vitals, LCP, görsel optimizasyonu ve otomatik XML sitemap ayarlarını iyileştiren pratik bir vaka çalışması.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -539,12 +561,14 @@ import Layout from '../Layouts/Layout.astro';
     <span id="article-modal-date" class="article-modal-date"></span>
     <div id="article-modal-description" class="project-modal-description"></div>
     <div id="article-modal-pills" class="project-modal-pills"></div>
+    <a id="article-modal-link" class="copy-btn inline-block mt-5 no-underline" href="/articles/performance-optimization/" data-tr="قراءة المقال كاملًا" data-en="Read full article" data-ar="قراءة المقال كاملًا">قراءة المقال كاملًا</a>
   </div>
 </div>
 
 <script is:inline>
   const articleDatabase = {
     isr_ringbuffer: {
+      slug: 'isr-ringbuffer',
       category: 'Gömülü Sistemler & Düşük Seviye Mimari',
       title: 'Gömülü Sistemlerde Donanım Kesmeleri (ISR) ve Ring Buffer Yönetimi',
       date: 'Ağustos 2026',
@@ -572,6 +596,7 @@ Bu Bare-metal Ring Buffer mimarisi sayesinde, sistem kaynakları minimum düzeyd
       pills: ['UART ISR', 'Ring Buffer', 'Bare-Metal', 'C/C++', 'Memory Management', 'FIFO', 'Interrupt Handling']
     },
     ota_architecture: {
+      slug: 'ota-architecture',
       category: 'Endüstriyel IoT & Güvenli Güncelleme Mimarisi',
       title: 'Endüstriyel Cihazlarda Uzaktan Kablosuz Yazılım Yükleme (OTA) Mimarisi',
       date: 'Temmuz 2026',
@@ -600,6 +625,26 @@ En büyük kabus, uzaktan atılan hatalı bir yazılımın cihazı 'Brick' etmes
 🎯 **Sonuç:**
 Bu katmanlı OTA mimarisi; operasyonel kesintileri sıfıra indirir, sahaya müdahale maliyetlerini ortadan kaldırır ve endüstriyel cihazlara uzaktan kurumsal düzeyde yaşam döngüsü yönetimi kazandırır.`,
       pills: ['ESP32', 'OTA Firmware', 'BLE / Wi-Fi', 'Rollback Mechanism', 'Bootloader', 'Partition Table', 'IoT Security']
+    },
+    performance_optimization: {
+      slug: 'performance-optimization',
+      category: 'Web Performansı ve SEO Mühendisliği',
+      title: 'Performans Optimizasyonu ve Kullanıcı Deneyimi',
+      date: 'Eylül 2026',
+      desc: `Bu kapsamlı vaka çalışması, Hasan TechLab'in web performansını ölçme ve iyileştirme sürecini açıklar. Amaç yalnızca Lighthouse puanını artırmak değil; mobil ağlarda hızlı açılan, etkileşimleri gecikmeyen ve arama motorları tarafından kolayca keşfedilen bir teknik portföy oluşturmaktı.
+
+    📌 **Ölçüm ve Core Web Vitals:** LCP, INP, CLS ve TTFB değerleri masaüstü ve mobil koşullarda karşılaştırıldı. Lighthouse laboratuvar verileri, gerçek kullanıcı verileriyle birlikte değerlendirildi.
+
+    📌 **Görsel Optimizasyonu:** 38×38 piksel gösterilen 1440×1440 boyutundaki profil görseli yeniden boyutlandırılıp sıkıştırılarak mobil veri kullanımı azaltıldı ve LCP iyileştirildi.
+
+    📌 **Dinamik XML Sitemap:** Resmî @astrojs/sitemap entegrasyonu ve canonical site URL'si, yeni sayfa ve makaleler yayınlandıkça sitemap'i güncel tutar.
+
+    📌 **SEO Teknik ve Erişilebilirlik:** Başlık hiyerarşisi, canonical URL, robots kuralları, alternatif metinler, klavye erişimi ve sabit görsel boyutları birlikte ele alındı.
+
+    📌 **Doğrulama Döngüsü:** Her üretim derlemesinden sonra dosya boyutları, kaynaklar, Lighthouse, sitemap-index.xml ve Search Console kontrolleri tekrarlanır.
+
+    🎯 **Sonuç:** Lighthouse masaüstü performansında 100/100, mobil performansında 90+, SEO ve en iyi uygulamalarda 100/100 puana ulaştı; sunucu yanıt süresi 0,8 saniye oldu.`,
+      pills: ['Astro', 'Core Web Vitals', 'LCP', 'INP', 'CLS', 'Technical SEO', 'XML Sitemap', 'Image Optimization']
     }
   };
 
@@ -754,6 +799,46 @@ Bu katmanlı OTA mimarisi; operasyonel kesintileri sıfıra indirir, sahaya müd
 🎯 **النتيجة:** تقليل التوقف التشغيلي وتكاليف الخدمة الميدانية وتوفير إدارة آمنة لدورة حياة الأجهزة عن بعد.`,
           pills: ['ESP32', 'OTA Firmware', 'BLE / Wi-Fi', 'Rollback Mechanism', 'Bootloader', 'Partition Table', 'IoT Security']
         }
+      },
+      performance_optimization: {
+        en: {
+          category: 'Web Performance & SEO Engineering',
+          title: 'Performance Optimization and User Experience: Exceptional Speed and Complete Indexing',
+          date: 'September 2026',
+          desc: `This technical case study explains how Hasan TechLab improved loading speed, user experience, and technical SEO. The goal was not only a higher Lighthouse score, but a stable portfolio that remains fast on mobile networks and easy for search engines to crawl.
+
+📌 **Measurement and Core Web Vitals:** LCP, INP, CLS, and TTFB were compared on desktop and mobile. Lighthouse lab data was treated as a diagnostic baseline alongside real-user data.
+
+📌 **Image Optimization:** Resizing a 1440×1440 profile image to its displayed 38×38 dimensions reduced its transfer size by more than 95% and improved LCP on mobile networks.
+
+📌 **Dynamic XML Sitemap:** The official @astrojs/sitemap integration and canonical URL generate a current sitemap whenever new pages or articles are added.
+
+📌 **Technical SEO and Accessibility:** Heading hierarchy, canonical URLs, robots rules, alternative text, keyboard access, and stable image dimensions were reviewed together.
+
+📌 **Validation Loop:** Every production build is checked for asset size, render-blocking resources, Lighthouse scores, sitemap-index.xml, robots.txt, and Search Console indexing signals.
+
+🎯 **Result:** Lighthouse reached 100/100 for desktop performance, 90+ for mobile performance, 100/100 for SEO and best practices, and a 0.8-second server response time.`,
+          pills: ['Astro', 'Core Web Vitals', 'LCP', 'INP', 'CLS', 'Technical SEO', 'XML Sitemap', 'Image Optimization']
+        },
+        ar: {
+          category: 'هندسة أداء الويب وتحسين محركات البحث',
+          title: 'تحسين الأداء وتجربة المستخدم: كيف وصلت بموقعي إلى سرعة استثنائية وأرشفة كاملة',
+          date: '14 سبتمبر 2026',
+          desc: `تستعرض هذه الدراسة التقنية المتقدمة الخطوات التي جعلت منصة Hasan TechLab أسرع وأسهل في الاكتشاف من محركات البحث. لم يكن الهدف رفع رقم Lighthouse فقط، بل بناء تجربة مستقرة وسريعة على شبكات الهاتف وقابلة للقياس بعد النشر.
+
+📌 **القياس ومؤشرات Core Web Vitals:** تمت مقارنة LCP وINP وCLS وTTFB على الحاسوب والهاتف، مع التمييز بين بيانات المختبر وبيانات المستخدمين الحقيقيين.
+
+📌 **تحسين الصور:** أُعيد تحجيم صورة ملف شخصي بأبعاد 1440×1440 إلى أبعاد العرض الفعلية 38×38 بكسل، مع ضغطها لتقليل حجم النقل بأكثر من 95% وتحسين مقياس LCP على شبكات الهاتف.
+
+📌 **خريطة الموقع الديناميكية:** يضمن دمج الحزمة الرسمية @astrojs/sitemap مع عنوان الموقع الأساسي توليد خريطة موقع محدثة عند إضافة صفحات أو مقالات جديدة.
+
+📌 **SEO التقني وإمكانية الوصول:** تمت مراجعة بنية العناوين، وCanonical URL، وقواعد robots، والنصوص البديلة، ودعم لوحة المفاتيح، وتثبيت أبعاد الصور لتقليل CLS.
+
+📌 **دورة التحقق:** بعد كل بناء إنتاجي يتم فحص أحجام الأصول، والموارد التي تمنع العرض، ونتائج Lighthouse، وملفات sitemap وrobots.txt، ومؤشرات الفهرسة في Search Console.
+
+🎯 **النتيجة:** الوصول إلى 100/100 في أداء سطح المكتب، و90+ في أداء الجوال، و100/100 في SEO وأفضل الممارسات، مع زمن استجابة خادم بلغ 0.8 ثانية.`,
+          pills: ['Astro', 'Core Web Vitals', 'LCP', 'INP', 'CLS', 'SEO التقني', 'XML Sitemap', 'تحسين الصور']
+        }
       }
     }
   };
@@ -769,6 +854,7 @@ Bu katmanlı OTA mimarisi; operasyonel kesintileri sıfıra indirir, sahaya müd
   const articleDate = document.getElementById('article-modal-date');
   const articleDescription = document.getElementById('article-modal-description');
   const articlePills = document.getElementById('article-modal-pills');
+  const articleLink = document.getElementById('article-modal-link');
   let lastArticleTrigger = null;
 
   function openArticleModal(articleKey, trigger) {
@@ -781,6 +867,7 @@ Bu katmanlı OTA mimarisi; operasyonel kesintileri sıfıra indirir, sahaya müd
     articleDate.textContent = localizedArticle.date;
     articleDescription.innerHTML = formatProjectDescription(localizedArticle.desc);
     articlePills.innerHTML = localizedArticle.pills.map((pill) => `<span>${pill}</span>`).join('');
+    articleLink.href = `/articles/${article.slug}/`;
     lastArticleTrigger = trigger;
     articleModal.hidden = false;
     document.body.classList.add('modal-open');

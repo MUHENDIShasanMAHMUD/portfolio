@@ -1,0 +1,68 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../Layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article }
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const formattedDate = article.data.date.toLocaleDateString('ar-EG', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout title={article.data.title} description={article.data.description}>
+  <article class="article-page" dir="rtl" lang="ar">
+    <header class="article-page-header">
+      <a class="article-back-link" href="/" aria-label="العودة إلى الصفحة الرئيسية">← العودة إلى المقالات</a>
+      <p class="article-eyebrow">Hasan TechLab / دراسة حالة تقنية</p>
+      <h1>{article.data.title}</h1>
+      <p class="article-lede">{article.data.description}</p>
+      <div class="article-meta">
+        <time datetime={article.data.date.toISOString()}>{formattedDate}</time>
+        <div class="article-tags">
+          {article.data.tags.map((tag) => <span>{tag}</span>)}
+        </div>
+      </div>
+    </header>
+    <div class="article-content">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .article-page { max-width: 900px; margin: 0 auto; color: #dbe4f0; }
+  .article-page-header { border-bottom: 1px solid #243044; padding: 1rem 0 2.5rem; margin-bottom: 2.5rem; }
+  .article-back-link { color: #5eead4; text-decoration: none; font-size: .9rem; }
+  .article-back-link:hover { color: #fff; }
+  .article-eyebrow { color: #5eead4; font: 700 .75rem/1.5 'JetBrains Mono', monospace; letter-spacing: .08em; margin: 2rem 0 1rem; }
+  .article-page h1 { color: #fff; font-size: clamp(2rem, 5vw, 4rem); line-height: 1.2; margin: 0; }
+  .article-lede { color: #aab8ca; font-size: 1.1rem; line-height: 2; max-width: 760px; }
+  .article-meta { align-items: center; display: flex; flex-wrap: wrap; gap: 1rem; color: #8492a6; font-size: .85rem; }
+  .article-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .article-tags span { border: 1px solid #31505d; border-radius: 999px; color: #8eeadd; padding: .3rem .65rem; }
+  .article-content { font-size: 1.05rem; line-height: 2; }
+  .article-content h2 { border-right: 3px solid #2dd4bf; color: #fff; font-size: 1.65rem; line-height: 1.5; margin: 3rem 0 1rem; padding-right: .8rem; }
+  .article-content h3 { color: #dffcf8; font-size: 1.25rem; line-height: 1.6; margin: 2.2rem 0 .75rem; }
+  .article-content p { color: #c1ccda; margin: 0 0 1.1rem; }
+  .article-content strong { color: #fff; }
+  .article-content ul, .article-content ol { color: #c1ccda; margin: 0 0 1.4rem; padding-right: 1.5rem; }
+  .article-content li { margin: .45rem 0; }
+  .article-content code { background: #111b2b; border: 1px solid #26384f; border-radius: .3rem; color: #8eeadd; padding: .1rem .35rem; }
+  .article-content pre { background: #0a101d; border: 1px solid #243044; border-radius: .6rem; direction: ltr; overflow-x: auto; padding: 1rem; text-align: left; }
+  .article-content pre code { background: transparent; border: 0; color: #d8e7ff; padding: 0; }
+  .article-content table { border-collapse: collapse; display: block; margin: 1.5rem 0; overflow-x: auto; width: 100%; }
+  .article-content th, .article-content td { border: 1px solid #2a3a50; padding: .65rem .8rem; text-align: right; }
+  .article-content th { background: #111b2b; color: #fff; }
+  .article-content blockquote { border-right: 3px solid #f59e0b; color: #d8c99e; margin: 1.5rem 0; padding: .5rem 1rem; }
+  @media (max-width: 640px) { .article-content { font-size: 1rem; } .article-page-header { padding-top: 0; } }
+</style>
