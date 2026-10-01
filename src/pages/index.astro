@@ -1059,22 +1059,30 @@ const modalTranslations = {
   function openProjectModal(projectKey, trigger) {
     const project = projectDetails[projectKey];
     if (!project || !projectModal) return;
-    const localizedProject = modalTranslations.projects[projectKey]?.[getModalLanguage()] || project;
+    
+    const currentLang = getModalLanguage();
+    const localizedProject = modalTranslations.projects[projectKey]?.[currentLang] || project;
 
     projectCategory.textContent = localizedProject.category;
     projectTitle.textContent = localizedProject.title;
     projectDescription.innerHTML = formatProjectDescription(localizedProject.desc);
     projectPills.innerHTML = localizedProject.pills.map((pill) => `<span>${pill}</span>`).join('');
     
-    // إنشاء زر المعاينة وزر GitHub إذا وجدا
+    // إنشاء زر المعاينة وزر GitHub مع ترجمة نص الزر
     if (projectActions) {
       projectActions.innerHTML = '';
-      if (localizedProject.liveUrl || project.liveUrl) {
-        const live = localizedProject.liveUrl || project.liveUrl;
-        projectActions.innerHTML += `<a href="${live}" target="_blank" rel="noopener noreferrer" class="copy-btn bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-4 py-2 rounded-lg no-underline inline-flex items-center gap-1.5 shadow-md"><span>Canlı Aracı Aç ➔</span></a>`;
+      
+      const live = localizedProject.liveUrl || project.liveUrl;
+      if (live) {
+        let btnText = 'Canlı Aracı Aç ➔';
+        if (currentLang === 'en') btnText = 'Open Live Tool ➔';
+        if (currentLang === 'ar') btnText = 'فتح الأداة الحية ➔';
+
+        projectActions.innerHTML += `<a href="${live}" target="_blank" rel="noopener noreferrer" class="copy-btn bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-4 py-2 rounded-lg no-underline inline-flex items-center gap-1.5 shadow-md"><span>${btnText}</span></a>`;
       }
-      if (localizedProject.githubUrl || project.githubUrl) {
-        const gh = localizedProject.githubUrl || project.githubUrl;
+      
+      const gh = localizedProject.githubUrl || project.githubUrl;
+      if (gh) {
         projectActions.innerHTML += `<a href="${gh}" target="_blank" rel="noopener noreferrer" class="copy-btn px-4 py-2 rounded-lg no-underline inline-flex items-center gap-1.5"><span>GitHub Repo</span></a>`;
       }
     }
