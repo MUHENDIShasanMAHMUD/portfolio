@@ -60,6 +60,23 @@ const currentYear = new Date().getFullYear();
         transition: color 0.2s ease;
       }
 
+      @media (max-width: 767px) {
+        .nav-track {
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          overflow: visible;
+        }
+
+        .nav-tab-btn {
+          min-width: 0;
+          padding-left: 0.25rem;
+          padding-right: 0.25rem;
+          text-align: center;
+          white-space: normal;
+          line-height: 1.15;
+        }
+      }
+
     </style>
   </head>
 
