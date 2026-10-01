@@ -302,7 +302,8 @@ const currentYear = new Date().getFullYear();
       // Initialization
       document.addEventListener('DOMContentLoaded', () => {
         let savedLang = 'tr';
-        try { savedLang = localStorage.getItem('hm-lang') || 'tr'; } catch (e) {}
+        const queryLang = new URLSearchParams(window.location.search).get('lang');
+        try { savedLang = queryLang || localStorage.getItem('hm-lang') || 'tr'; } catch (e) { savedLang = queryLang || 'tr'; }
         setLang(['tr', 'en', 'ar'].includes(savedLang) ? savedLang : 'tr');
 
         if (window.location.pathname === '/' || window.location.pathname === '') {
