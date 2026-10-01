@@ -583,7 +583,7 @@ import Layout from '../Layouts/Layout.astro';
     <span id="article-modal-date" class="article-modal-date"></span>
     <div id="article-modal-description" class="project-modal-description"></div>
     <div id="article-modal-pills" class="project-modal-pills"></div>
-    <a id="article-modal-link" class="copy-btn inline-block mt-5 no-underline" href="/articles/performance-optimization/" data-tr="قراءة المقال كاملًا" data-en="Read full article" data-ar="قراءة المقال كاملًا">قراءة المقال كاملًا</a>
+    <div id="article-modal-actions" class="mt-6 pt-4 border-t border-slate-800 flex gap-3 flex-wrap"></div>
   </div>
 </div>
 
@@ -917,17 +917,33 @@ const modalTranslations = {
   const articleLink = document.getElementById('article-modal-link');
   let lastArticleTrigger = null;
 
+  const articleActions = document.getElementById('article-modal-actions');
+
   function openArticleModal(articleKey, trigger) {
     const article = articleDatabase[articleKey];
     if (!article || !articleModal) return;
-    const localizedArticle = modalTranslations.articles[articleKey]?.[getModalLanguage()] || article;
+    
+    const currentLang = getModalLanguage();
+    const localizedArticle = modalTranslations.articles[articleKey]?.[currentLang] || article;
 
     articleCategory.textContent = localizedArticle.category;
     articleTitle.textContent = localizedArticle.title;
     articleDate.textContent = localizedArticle.date;
     articleDescription.innerHTML = formatProjectDescription(localizedArticle.desc);
     articlePills.innerHTML = localizedArticle.pills.map((pill) => `<span>${pill}</span>`).join('');
-    articleLink.href = `/articles/${article.slug}/`;
+    
+    // إنشاء زر فتح المقال وترجمة نصه بالكامل ديناميكياً
+    if (articleActions) {
+      articleActions.innerHTML = '';
+      
+      let readBtnText = 'Makalenin Tamamını Oku ➔';
+      if (currentLang === 'en') readBtnText = 'Read Full Article ➔';
+      if (currentLang === 'ar') readBtnText = 'قراءة المقال كاملاً ➔';
+
+      const targetUrl = `/articles/${article.slug}/?lang=${currentLang}`;
+      articleActions.innerHTML = `<a href="${targetUrl}" class="copy-btn bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-4 py-2 rounded-lg no-underline inline-flex items-center gap-1.5 shadow-md"><span>${readBtnText}</span></a>`;
+    }
+
     lastArticleTrigger = trigger;
     articleModal.hidden = false;
     document.body.classList.add('modal-open');
@@ -1077,8 +1093,10 @@ const modalTranslations = {
         let btnText = 'Canlı Aracı Aç ➔';
         if (currentLang === 'en') btnText = 'Open Live Tool ➔';
         if (currentLang === 'ar') btnText = 'فتح الأداة الحية ➔';
+        const liveUrl = new URL(live, window.location.origin);
+        liveUrl.searchParams.set('lang', currentLang);
 
-        projectActions.innerHTML += `<a href="${live}" target="_blank" rel="noopener noreferrer" class="copy-btn bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-4 py-2 rounded-lg no-underline inline-flex items-center gap-1.5 shadow-md"><span>${btnText}</span></a>`;
+        projectActions.innerHTML += `<a href="${liveUrl.href}" target="_blank" rel="noopener noreferrer" class="copy-btn bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-4 py-2 rounded-lg no-underline inline-flex items-center gap-1.5 shadow-md"><span>${btnText}</span></a>`;
       }
       
       const gh = localizedProject.githubUrl || project.githubUrl;
@@ -1121,6 +1139,7 @@ const modalTranslations = {
 <!-- Copy Handler -->
 <script is:inline>
   function copyText(str, btn) {
+    if (!navigator.clipboard) return;
     navigator.clipboard.writeText(str).then(() => {
       const orig = btn.innerText;
       btn.innerText = 'Kopyalandı!';
@@ -1129,7 +1148,7 @@ const modalTranslations = {
         btn.innerText = orig;
         btn.classList.remove('bg-teal-500', 'text-slate-950', 'border-teal-400');
       }, 1600);
-    });
+    }).catch(() => {});
   }
 </script>
 
