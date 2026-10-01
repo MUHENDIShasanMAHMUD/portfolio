@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../Layouts/Layout.astro';
+import { localizedArticles as translatedArticles } from '../../data/localizedArticles';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
@@ -12,30 +13,73 @@ export async function getStaticPaths() {
 
 const { article } = Astro.props;
 const { Content } = await render(article);
-const formattedDate = article.data.date.toLocaleDateString('ar-EG', {
+const requestedLanguage = Astro.url.searchParams.get('lang');
+const initialLanguage = ['tr', 'en', 'ar'].includes(requestedLanguage ?? '') ? requestedLanguage : 'ar';
+const initialDirection = initialLanguage === 'ar' ? 'rtl' : 'ltr';
+const localizedArticles = translatedArticles;
+const articleKey = article.id ?? '';
+const turkishArticle = localizedArticles.tr[articleKey];
+const englishArticle = localizedArticles.en[articleKey];
+const dateFormat = {
   year: 'numeric',
   month: 'long',
   day: 'numeric'
-});
+};
+const formattedDates = {
+  ar: article.data.date.toLocaleDateString('ar-EG', dateFormat),
+  tr: article.data.date.toLocaleDateString('tr-TR', dateFormat),
+  en: article.data.date.toLocaleDateString('en-US', dateFormat)
+};
 ---
 
 <Layout title={article.data.title} description={article.data.description}>
-  <article class="article-page" dir="rtl" lang="ar">
+  <article class="article-page" dir={initialDirection} lang={initialLanguage} data-article-page>
     <header class="article-page-header">
-      <a class="article-back-link" href="/" aria-label="العودة إلى الصفحة الرئيسية">← العودة إلى المقالات</a>
-      <p class="article-eyebrow">Hasan TechLab / دراسة حالة تقنية</p>
-      <h1>{article.data.title}</h1>
-      <p class="article-lede">{article.data.description}</p>
+      <a
+        class="article-back-link"
+        href="/#tab-articles"
+        aria-label="العودة إلى الصفحة الرئيسية"
+        data-aria-tr="Ana sayfaya dön"
+        data-aria-en="Back to articles"
+        data-aria-ar="العودة إلى المقالات"
+        data-tr="← Makalelere dön"
+        data-en="← Back to articles"
+        data-ar="← العودة إلى المقالات"
+      >← العودة إلى المقالات</a>
+      <p
+        class="article-eyebrow"
+        data-tr="Hasan TechLab / Teknik vaka çalışması"
+        data-en="Hasan TechLab / Technical case study"
+        data-ar="Hasan TechLab / دراسة حالة تقنية"
+      >Hasan TechLab / دراسة حالة تقنية</p>
+      <h1
+        data-tr={turkishArticle.title}
+        data-en={englishArticle.title}
+        data-ar={article.data.title}
+      >{article.data.title}</h1>
+      <p
+        class="article-lede"
+        data-tr={turkishArticle.description}
+        data-en={englishArticle.description}
+        data-ar={article.data.description}
+      >{article.data.description}</p>
       <div class="article-meta">
-        <time datetime={article.data.date.toISOString()}>{formattedDate}</time>
+        <time
+          datetime={article.data.date.toISOString()}
+          data-date-ar={formattedDates.ar}
+          data-date-tr={formattedDates.tr}
+          data-date-en={formattedDates.en}
+        >{formattedDates[initialLanguage]}</time>
         <div class="article-tags">
           {article.data.tags.map((tag) => <span>{tag}</span>)}
         </div>
       </div>
     </header>
-    <div class="article-content">
+    <div class="article-content article-lang-content" data-content-language="ar">
       <Content />
     </div>
+    <div class="article-content article-lang-content" data-content-language="tr" set:html={turkishArticle.content} hidden></div>
+    <div class="article-content article-lang-content" data-content-language="en" set:html={englishArticle.content} hidden></div>
   </article>
 </Layout>
 
@@ -66,3 +110,31 @@ const formattedDate = article.data.date.toLocaleDateString('ar-EG', {
   .article-content blockquote { border-right: 3px solid #f59e0b; color: #d8c99e; margin: 1.5rem 0; padding: .5rem 1rem; }
   @media (max-width: 640px) { .article-content { font-size: 1rem; } .article-page-header { padding-top: 0; } }
 </style>
+
+<script is:inline>
+  const articlePage = document.querySelector('[data-article-page]');
+  const syncArticleLanguage = (language) => {
+    if (!articlePage || !['tr', 'en', 'ar'].includes(language)) return;
+    articlePage.setAttribute('lang', language);
+    articlePage.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
+    articlePage.querySelectorAll('[data-content-language]').forEach((element) => {
+      element.hidden = element.dataset.contentLanguage !== language;
+    });
+    articlePage.querySelectorAll('[data-tr][data-en][data-ar]').forEach((element) => {
+      element.textContent = element.getAttribute(`data-${language}`);
+    });
+    articlePage.querySelectorAll('[data-date-tr][data-date-en][data-date-ar]').forEach((element) => {
+      element.textContent = element.getAttribute(`data-date-${language}`);
+    });
+    const articleTitle = articlePage.querySelector('h1');
+    if (articleTitle) document.title = `${articleTitle.textContent} — Hasan Mahmud`;
+  };
+
+  try {
+    syncArticleLanguage(new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('hm-lang') || 'ar');
+  } catch (error) {
+    syncArticleLanguage('ar');
+  }
+
+  window.addEventListener('languagechange', (event) => syncArticleLanguage(event.detail));
+</script>
