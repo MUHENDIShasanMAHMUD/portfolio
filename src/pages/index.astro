@@ -336,6 +336,29 @@ import Layout from '../Layouts/Layout.astro';
           <span class="system-pill">Developer Tool</span>
         </div>
       </div>
+
+      <!-- TechLab Studio -->
+      <div class="interactive-card project-trigger p-8 flex flex-col justify-between" role="button" tabindex="0" data-project="techlab_studio" aria-haspopup="dialog">
+        <div>
+          <span class="text-xs font-bold text-teal-400 uppercase tracking-wide font-['JetBrains_Mono']" data-tr="WEB &amp; GÖMÜLÜ ARAÇLAR / GÖNÜLLÜ SİSTEMLER" data-en="WEB &amp; EMBEDDED TOOLS / VOLUNTEER SYSTEMS" data-ar="أدوات الويب والأنظمة المدمجة / الأنظمة التطوعية">WEB &amp; GÖMÜLÜ ARAÇLAR / GÖNÜLLÜ SİSTEMLER</span>
+          <h3 class="text-xl font-bold text-white mt-2 mb-3" data-tr="TechLab Studio &amp; Stepper Motor Calculator" data-en="TechLab Studio &amp; Stepper Motor Calculator" data-ar="TechLab Studio وحاسبة محرك الخطوات">TechLab Studio &amp; Stepper Motor Calculator</h3>
+          <p
+            class="text-sm text-slate-300 leading-relaxed"
+            data-tr="Stepper motorlar için hız profilleri ve darbe zamanlamaları (Pulse Rate/Period) hesaplayıp üreten, otomatik C++/Arduino kodu oluşturan ve temiz bir API ile SQLite üzerinde projeleri buluta kaydeden interaktif stüdyo platformu."
+            data-en="An interactive studio for calculating and generating stepper-motor speed profiles and pulse timing (Pulse Rate/Period), automatically generating C++/Arduino code, and saving projects in the cloud through a clean API backed by SQLite."
+            data-ar="منصة استوديو تفاعلية لحساب وتوليد بروفايلات السرعة وتوقيت النبضات (Pulse Rate/Period) لمحركات الخطوات، مع توليد كود C++/Arduino تلقائياً وحفظ المشاريع سحابياً عبر API نظيف وقاعدة بيانات SQLite."
+          >
+            Stepper motorlar için hız profilleri ve darbe zamanlamaları (Pulse Rate/Period) hesaplayıp üreten, otomatik C++/Arduino kodu oluşturan ve temiz bir API ile SQLite üzerinde projeleri buluta kaydeden interaktif stüdyo platformu.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-6 pt-4 border-t border-slate-800">
+          <span class="system-pill">Vue 3</span>
+          <span class="system-pill">Express.js</span>
+          <span class="system-pill">SQLite</span>
+          <span class="system-pill">C++ / Arduino</span>
+          <span class="system-pill">REST API</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -785,6 +808,22 @@ const modalTranslations = {
           liveUrl: 'https://tools.hasantechlab.com',
           githubUrl: 'https://github.com/MUHENDIShasanMAHMUD/devmorph'
         }
+      },
+      techlab_studio: {
+        en: {
+          category: 'WEB & EMBEDDED TOOLS / VOLUNTEER SYSTEMS',
+          title: 'TechLab Studio & Stepper Motor Calculator',
+          desc: `An interactive studio for calculating and generating stepper-motor speed profiles and pulse timing (Pulse Rate/Period). It automatically generates C++/Arduino code and saves projects in the cloud through a clean REST API backed by SQLite.`,
+          pills: ['Vue 3', 'Express.js', 'SQLite', 'C++ / Arduino', 'REST API'],
+          liveUrl: 'https://studio.hasantechlab.com'
+        },
+        ar: {
+          category: 'أدوات الويب والأنظمة المدمجة / الأنظمة التطوعية',
+          title: 'TechLab Studio وحاسبة محرك الخطوات',
+          desc: `منصة استوديو تفاعلية لحساب وتوليد بروفايلات السرعة وتوقيت النبضات (Pulse Rate/Period) لمحركات الخطوات. تولد كود C++/Arduino تلقائياً وتحفظ المشاريع سحابياً عبر REST API نظيف مدعوم بقاعدة بيانات SQLite.`,
+          pills: ['Vue 3', 'Express.js', 'SQLite', 'C++ / Arduino', 'REST API'],
+          liveUrl: 'https://studio.hasantechlab.com'
+        }
       }
     },
     articles: {
@@ -1051,6 +1090,13 @@ const modalTranslations = {
       pills: ['JavaScript', 'Tailwind CSS', 'Client-Side', 'Developer Tool', 'Open Source'],
       liveUrl: 'https://tools.hasantechlab.com',
       githubUrl: 'https://github.com/MUHENDIShasanMAHMUD/devmorph'
+    },
+    techlab_studio: {
+      category: 'WEB & GÖMÜLÜ ARAÇLAR / GÖNÜLLÜ SİSTEMLER',
+      title: 'TechLab Studio & Stepper Motor Calculator',
+      desc: `Stepper motorlar için hız profilleri ve darbe zamanlamalarını (Pulse Rate/Period) hesaplayan ve üreten interaktif bir stüdyo platformudur. C++/Arduino kodunu otomatik olarak oluşturur; projeleri temiz bir REST API ve SQLite altyapısı üzerinden buluta kaydetmeyi sağlar.`,
+      pills: ['Vue 3', 'Express.js', 'SQLite', 'C++ / Arduino', 'REST API'],
+      liveUrl: 'https://studio.hasantechlab.com'
     }
   };
 
